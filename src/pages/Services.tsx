@@ -8,7 +8,7 @@ const Services = () => {
 
   const services = servicesData;
 
-  const categories = ["All", ...new Set(services.map(s => s.category))];
+  const categories = ["All", ...new Set(services.map((s) => s.category))];
 
   const filteredServices =
     activeCategory === "All"
@@ -16,8 +16,7 @@ const Services = () => {
       : services.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="bg-deep-black text-white">
-
+    <div className="bg-deep-black text-white min-h-screen">
       {/* HEADER */}
       <section className="pt-20 pb-10 text-center">
         <div className="section-container">
@@ -51,43 +50,61 @@ const Services = () => {
 
       {/* GRID */}
       <section className="section-container py-10">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServices.map((service) => {
             const Icon = (Icons as any)[service.icon] || Icons.Box;
+
+            // pick the first image from the array
+            const coverImage = service.images?.[0] || "";
 
             return (
               <div
                 key={service.id}
-                className="glass-card p-6 flex flex-col justify-between hover:scale-[1.02] transition"
+                className="group relative flex flex-col overflow-hidden rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
               >
-                {/* TOP */}
-                <div>
-                  <Icon className="w-8 h-8 text-gold-400 mb-4" />
+                {/* IMAGE */}
+                {coverImage && (
+                  <img
+                    src={coverImage}
+                    alt={service.name}
+                    className="w-full object-contain"
+                  />
+                )}
 
-                  <h2 className="text-xl font-bold mb-2">
-                    {service.name}
-                  </h2>
+                {/* HOVER OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 
-                  <p className="text-gray-400 text-sm mb-4">
-                    {service.fullDescription.slice(0, 100)}...
-                  </p>
+                {/* TEXT */}
+                <div className="p-6 bg-charcoal-200/80 backdrop-blur-sm flex flex-col justify-between flex-1 relative z-10">
+                  <div>
+                    <div className="flex items-center mb-3">
+                      <Icon className="w-7 h-7 text-gold-400 mr-2" />
+                      <h2 className="text-xl md:text-2xl font-bold text-white">
+                        {service.name}
+                      </h2>
+                    </div>
+
+                    <p className="text-gray-300 text-sm mb-4">
+                      {service.shortDescription}
+                    </p>
+
+                    <p className="text-gold-400 text-sm mb-4">
+                      {service.pricing}
+                    </p>
+                  </div>
+
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="mt-4 inline-block text-center px-4 py-2 rounded-full bg-gold-400 text-deep-black text-sm font-semibold hover:bg-gold-300 transition"
+                  >
+                    Learn More
+                  </Link>
                 </div>
-
-                {/* CTA */}
-                <Link
-                  to={`/services/${service.slug}`}
-                  className="mt-4 inline-block text-center px-4 py-2 rounded-full bg-gold-400 text-deep-black text-sm font-semibold hover:bg-gold-300 transition"
-                >
-                  Learn More
-                </Link>
               </div>
             );
           })}
-
         </div>
       </section>
-
     </div>
   );
 };

@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import servicesData from "../data/services.json";
 import * as Icons from "lucide-react";
 import SocialProof from "../components/SocialProof";
-import heroImg from "../assets/hero-tech.png";
+//import heroImg from "../assets/hero-tech.png";
+import DynamicHero from "../components/Hero";
+import DashboardShowcase from "../components/DashboardShowcase";
 
 type Service = {
   id: number;
@@ -12,6 +14,7 @@ type Service = {
   icon: string;
   shortDescription: string;
   pricing: string;
+  images?: string[];
 };
 
 const Home = () => {
@@ -23,10 +26,10 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[80vh] flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-          {/* LEFT: TEXT */}
-          <div>
+      {/* <section className="relative min-h-[80vh] flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center"> */}
+      {/* LEFT: TEXT */}
+      {/* <div>
             <div className="inline-flex items-center glass-card px-4 py-2 mb-6">
               <span className="h-2 w-2 rounded-full bg-gold-400 mr-2"></span>
               <span className="text-sm text-gray-300">
@@ -52,10 +55,12 @@ const Home = () => {
                 Explore Services
               </Link>
             </div>
-          </div>
+          </div> */}
 
-          {/* RIGHT: IMAGE */}
-          <div className="relative">
+      <DynamicHero />
+
+      {/* RIGHT: IMAGE */}
+      {/* <div className="relative">
             <img
               src={heroImg}
               alt="Technology Solutions"
@@ -63,7 +68,7 @@ const Home = () => {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* HERO */}
       {/* <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
@@ -99,56 +104,63 @@ const Home = () => {
       </section> */}
 
       {/* SERVICES */}
-      <section className="bg-deep-black py-2">
-        <div className="section-container !py-8">
+      <section className="bg-deep-black py-16">
+        <div className="section-container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif font-bold text-white mb-4">
               Our <span className="gradient-text">Services</span>
             </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Modern solutions designed to grow your business. Click any card to
+              explore more.
+            </p>
           </div>
 
-          {/* GRID */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch">
             {featuredServices.map((service) => {
-              const Icon = (Icons as any)[service.icon] || Icons.Box;
+              // pick the first image from the array safely
+              const coverImage = service.images?.[0];
 
               return (
                 <div
                   key={service.id}
-                  className="glass-card p-8 group hover:border-gold-400/50 transition"
+                  className="group relative flex flex-col h-full overflow-hidden rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
                 >
-                  {/* ICON */}
-                  <Icon className="w-10 h-10 text-gold-400 mb-4" />
+                  {/* IMAGE */}
+                  {coverImage && (
+                    <div className="w-full h-48 bg-black flex items-center justify-center overflow-hidden">
+                      <img
+                        src={coverImage}
+                        alt={service.name}
+                        className="h-full object-contain"
+                      />
+                    </div>
+                  )}
 
-                  {/* TITLE */}
-                  <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition">
-                    {service.name}
-                  </h3>
-
-                  {/* DESC */}
-                  <p className="text-gray-400 text-sm mb-4">
-                    {service.shortDescription}
-                  </p>
-
-                  {/* PRICE */}
-                  <p className="text-gold-400 text-sm mb-4">
-                    {service.pricing}
-                  </p>
-
-                  {/* LINK */}
-                  <Link
-                    to={`/services#${service.slug}`}
-                    className="inline-flex items-center text-sm text-gray-300 hover:text-gold-400"
-                  >
-                    Learn more
-                    <Icons.ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
+                  {/* TEXT */}
+                  <div className="p-6 bg-charcoal-200/80 backdrop-blur-sm flex flex-col flex-1 justify-between">
+                    <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
+                      {service.name}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-4">
+                      {service.shortDescription}
+                    </p>
+                    <p className="text-gold-400 text-sm mb-4">
+                      {service.pricing}
+                    </p>
+                    <Link
+                      to={`/services#${service.slug}`}
+                      className="inline-flex items-center text-sm text-gray-300 hover:text-gold-400"
+                    >
+                      Learn more
+                      <Icons.ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* CTA */}
           <div className="text-center mt-12">
             <Link to="/services" className="btn-secondary">
               View All {services.length} Services
@@ -156,6 +168,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* DASHBOARD SHOWCASE */}
+      <DashboardShowcase />
 
       {/* SOCIAL PROOF */}
       <SocialProof />

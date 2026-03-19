@@ -7,6 +7,7 @@ const ServiceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
+  // find the service by slug
   const service = servicesData.find((s) => s.slug === slug);
 
   if (!service) {
@@ -15,32 +16,28 @@ const ServiceDetail = () => {
 
   const Icon = (Icons as any)[service.icon] || Icons.Box;
 
-
-
-const handleContactClick = () => {
-  navigate(`/contact?service=${encodeURIComponent(service.name)}#contact-section`);
-};
+  const handleContactClick = () => {
+    navigate(
+      `/contact?service=${encodeURIComponent(service.name)}#contact-section`,
+    );
+  };
 
   const handleWhatsApp = () => {
     const message = `Hello, I'm interested in your ${service.name} service.`;
     const phone = "254717770536";
 
-window.open(
-  `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-  "_blank",
-  "noopener,noreferrer"
-);
-
-    console.log("WhatsApp Click:", service.name);
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
-    <div className="bg-deep-black text-white">
-
-      {/* HERO */}
+    <div className="bg-deep-black text-white min-h-screen">
+      {/* HERO SECTION */}
       <section className="pt-24 pb-16 bg-gradient-to-b from-charcoal-200 to-deep-black">
         <div className="section-container max-w-5xl">
-
           <button
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-gray-400 hover:text-gold-400 mb-6 text-sm"
@@ -49,6 +46,7 @@ window.open(
             Back to Services
           </button>
 
+          {/* SERVICE TITLE & CATEGORY */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,11 +62,12 @@ window.open(
               </div>
             </div>
 
+            {/* FULL DESCRIPTION */}
             <p className="text-gray-300 max-w-2xl text-lg">
               {service.fullDescription}
             </p>
 
-            {/* CTA */}
+            {/* CTA BUTTONS */}
             <div className="mt-8 flex flex-wrap gap-4">
               <button
                 onClick={handleContactClick}
@@ -85,6 +84,44 @@ window.open(
               </button>
             </div>
           </motion.div>
+
+          {/* HERO IMAGE */}
+          {service.images?.[0] && (
+            <motion.img
+              src={service.images[0]}
+              alt={service.name}
+              className="w-full h-80 md:h-[400px] object-cover rounded-xl shadow-xl mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+          )}
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="section-container max-w-5xl py-10">
+        <h2 className="text-2xl font-bold mb-6 text-center">Features</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {service.features.map((f, i) => (
+            <div key={i} className="flex gap-3 items-start">
+              <Icons.Check className="w-5 h-5 text-gold-400 mt-1" />
+              <span className="text-gray-300">{f}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section className="section-container max-w-5xl py-10">
+        <h2 className="text-2xl font-bold mb-6 text-center">Benefits</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {service.benefits.map((b, i) => (
+            <div key={i} className="flex gap-3 items-start">
+              <Icons.Check className="w-5 h-5 text-gold-400 mt-1" />
+              <span className="text-gray-300">{b}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -93,7 +130,6 @@ window.open(
         <h2 className="text-2xl font-bold mb-6 text-center">
           What Clients Say
         </h2>
-
         <div className="grid md:grid-cols-2 gap-6">
           {[
             "They transformed our entire digital presence.",
@@ -109,40 +145,25 @@ window.open(
               “{t}”
             </motion.div>
           ))}
+
+          {/* IMAGE GALLERY */}
+          {service.images && service.images.length > 1 && (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+              {service.images.slice(1).map((img, i) => (
+                <motion.img
+                  key={i}
+                  src={img}
+                  alt={`${service.name} ${i + 2}`}
+                  className="w-full h-40 object-cover rounded-lg shadow-md hover:scale-105 transition-transform"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2 }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
-
-      {/* CONTENT */}
-      <section className="section-container max-w-5xl py-10 space-y-10">
-
-        {/* FEATURES */}
-        <div>
-          <h2 className="text-xl font-bold mb-4">Features</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {service.features.map((f, i) => (
-              <div key={i} className="flex gap-3">
-                <Icons.Check className="w-5 h-5 text-gold-400 mt-1" />
-                <span className="text-gray-300">{f}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* BENEFITS */}
-        <div>
-          <h2 className="text-xl font-bold mb-4">Benefits</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {service.benefits.map((b, i) => (
-              <div key={i} className="flex gap-3">
-                <Icons.Check className="w-5 h-5 text-gold-400 mt-1" />
-                <span className="text-gray-300">{b}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-      </section>
-
     </div>
   );
 };
