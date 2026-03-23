@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import About from './pages/About';
+import FounderDetails from "./pages/FounderDetails";
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/founders/:id" element={<FounderDetails />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />

@@ -88,8 +88,8 @@ const Footer = () => {
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                             </svg>
-                            <a href="mailto:info@brivemarc.co.ke" className="hover:text-gold-400 transition-colors">
-                                info@brivemarc.co.ke
+                            <a href="mailto:brivemarctechnologies@gmail.com" className="hover:text-gold-400 transition-colors">
+                                brivemarctechnologies@gmail.com
                             </a>
                         </div>
                         <div className="flex items-center gap-3 text-gray-300 mt-3">

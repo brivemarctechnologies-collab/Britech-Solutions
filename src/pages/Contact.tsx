@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-// import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import type { ContactFormData } from '../types';
 
 const Contact = () => {
@@ -14,52 +14,45 @@ const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    // Note: User needs to configure EmailJS with their own credentials
-    // Visit https://www.emailjs.com/ to set up
-    // const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with actual ID
-    // const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Replace with actual ID
-    // const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with actual key
+    // EmailJS configuration 
+    const EMAILJS_SERVICE_ID = 'service_3b8rnny'; 
+    const EMAILJS_TEMPLATE_ID = 'template_zuxl8ib'; 
+    const EMAILJS_PUBLIC_KEY = 'AwFwrYaU1PBLCw97A'; 
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus('idle');
 
-        try {
-            // For now, simulate success (user needs to configure EmailJS)
-            // Uncomment and configure the following when EmailJS is set up:
-            /*
-            await emailjs.send(
-              EMAILJS_SERVICE_ID,
-              EMAILJS_TEMPLATE_ID,
-              {
-                from_name: formData.name,
-                from_email: formData.email,
-                phone: phone,
-                service_interest: serviceInterest,
-                message: formData.message,
-                to_email: 'info@brivemarc.co.ke',
-              },
-              EMAILJS_PUBLIC_KEY
-            );
-            */
+  try {
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: phone || "Not provided",
+        service_interest: serviceInterest || "Not specified",
+        message: formData.message,
+        to_email: 'brivemarctechnologies@gmail.com',
+      },
+      EMAILJS_PUBLIC_KEY
+    );
 
-            // Simulated success
-            setTimeout(() => {
-                setIsSubmitting(false);
-                setSubmitStatus('success');
-                setFormData({ name: '', email: '', message: '' });
-                setPhone('');
-                setServiceInterest('');
+    setIsSubmitting(false);
+    setSubmitStatus('success');
 
-                setTimeout(() => setSubmitStatus('idle'), 5000);
-            }, 1500);
-        } catch (error) {
-            console.error('Email sending failed:', error);
-            setIsSubmitting(false);
-            setSubmitStatus('error');
-            setTimeout(() => setSubmitStatus('idle'), 5000);
-        }
-    };
+    // Reset form
+    setFormData({ name: '', email: '', message: '' });
+    setPhone('');
+    setServiceInterest('');
+
+  } catch (error) {
+    console.error('EmailJS error:', error);
+    setIsSubmitting(false);
+    setSubmitStatus('error');
+  }
+};
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         if (e.target.name === 'phone') {
@@ -125,8 +118,8 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-400 mb-1">Email</p>
-                                        <a href="mailto:info@brivemarc.co.ke" className="text-lg text-white hover:text-gold-400 transition-colors">
-                                            info@brivemarc.co.ke
+                                        <a href="mailto:brivemarctechnologies@gmail.com" className="text-lg text-white hover:text-gold-400 transition-colors">
+                                            brivemarctechnologies@gmail.com
                                         </a>
                                     </div>
                                 </div>
@@ -296,12 +289,12 @@ const Contact = () => {
                                 </form>
 
                                 {/* EmailJS Setup Note */}
-                                {/* <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                                <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                                     <p className="text-xs text-gray-400">
                                         <strong className="text-blue-400">Note:</strong> EmailJS configuration required for form to send emails.
                                         Contact admin to complete setup.
                                     </p>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </div>

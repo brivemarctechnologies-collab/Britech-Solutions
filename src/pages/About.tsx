@@ -5,30 +5,31 @@ const About = () => {
         {
             id: 1,
             name: 'Brighton Wandera',
-            role: 'AI Engineer & Frontend Developer',
-            bio: 'AI-focused developer building intelligent, high-performance user interfaces.',
-            image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e',
+            role: 'Android Dev, AI Engineer & Frontend Developer',
+            bio: 'AI-focused developer building intelligent, high-performance user interfaces and android applications.',
+            image: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1',
         },
         {
             id: 2,
             name: 'Muola Veronica',
             role: 'Design Director & Cybersecurity Lead',
             bio: 'Oversees design, cybersecurity, and customer experience strategy.',
-            image: 'https://images.unsplash.com/photo-1589571894960-20bbe2828d0a',
+            image: '/images/Vee.jpeg'
+           // image: '../../images/Vee.jpeg',
         },
         {
             id: 3,
             name: 'Marcos Solomon',
             role: 'Cybersecurity Expert & Systems Architect',
             bio: 'Leads system architecture and visual brand through graphic design.',
-            image: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1',
+            image: '/images/Marcos.jpeg',
         },
         {
             id: 4,
             name: 'Evans Kariuki',
             role: 'Backend Engineer & IoT Specialist',
             bio: 'Builds scalable backend systems and connected IoT solutions.',
-            image: 'https://images.unsplash.com/photo-1614289371518-722f2615943d',
+            image: '/images/VansKE.jpeg',
         },
     ];
     
@@ -79,29 +80,42 @@ const About = () => {
             <section className="py-16 bg-gradient-to-b from-deep-black to-charcoal-200">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                icon: '🎯',
-                                title: 'Our Mission',
-                                description: 'Empowering businesses with smart, secure technology solutions that drive growth and innovation',
-                            },
-                            {
-                                icon: '👁️',
-                                title: 'Our Vision',
-                                description: 'To be Africa\'s leading technology partner, recognized for excellence and innovation',
-                            },
-                            {
-                                icon: '⭐',
-                                title: 'Our Values',
-                                description: 'Integrity, innovation, quality, and customer-first approach in everything we do',
-                            },
-                        ].map((item, index) => (
-                            <div key={index} className="glass-card p-8 text-center">
-                                <div className="text-5xl mb-4">{item.icon}</div>
-                                <h3 className="text-xl font-serif font-bold text-white mb-3">{item.title}</h3>
-                                <p className="text-gray-400">{item.description}</p>
-                            </div>
-                        ))}
+{[
+    {
+        icon: (
+            <svg className="w-10 h-10 text-gold-400 mx-auto mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M12 2l4 8-4 4-4-4 4-8zM2 12l8 4 4-4-4-4-8 4zM12 22l-4-8 4-4 4 4-4 8zM22 12l-8-4-4 4 4 4 8-4z"/>
+            </svg>
+        ),
+        title: 'Our Mission',
+        description: 'Empowering businesses with smart, secure technology solutions that drive growth and innovation',
+    },
+    {
+        icon: (
+            <svg className="w-10 h-10 text-gold-400 mx-auto mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+            </svg>
+        ),
+        title: 'Our Vision',
+        description: 'To be Africa\'s leading technology partner, recognized for excellence and innovation',
+    },
+    {
+        icon: (
+            <svg className="w-10 h-10 text-gold-400 mx-auto mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+        ),
+        title: 'Our Values',
+        description: 'Integrity, innovation, quality, and customer-first approach in everything we do',
+    },
+].map((item, index) => (
+    <div key={index} className="glass-card p-8 text-center">
+        {item.icon}
+        <h3 className="text-xl font-serif font-bold text-white mb-3">{item.title}</h3>
+        <p className="text-gray-400">{item.description}</p>
+    </div>
+))}
                     </div>
                 </div>
             </section>
@@ -116,12 +130,16 @@ const About = () => {
                         <p className="text-gray-400 max-w-2xl mx-auto">
                             Four visionaries united by a passion for technology and a commitment to excellence
                         </p>
-                    </div>
+                    </div></div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
     {founders.map((founder) => (
-        <div key={founder.id} className="glass-card p-6 text-center group">
-            <div className="relative mb-6 mx-auto w-32 h-32">
+        <div
+            key={founder.id}
+            className="glass-card p-6 text-center group cursor-pointer hover:scale-105 transition"
+            onClick={() => window.location.href = `/founders/${founder.id}`}
+        >
+            <div className="relative mb-6 mx-auto w-40 h-40">
                 <img
                     src={founder.image}
                     alt={founder.name}
@@ -136,14 +154,16 @@ const About = () => {
             <p className="text-sm text-gold-400 mb-3 font-medium">
                 {founder.role}
             </p>
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-sm text-gray-400 leading-relaxed mb-4">
                 {founder.bio}
             </p>
+
+            <button className="text-sm text-gold-400 hover:underline">
+                View More →
+            </button>
         </div>
     ))}
 </div>
-
-                </div>
             </section>
 
             {/* Trust Indicators */}
