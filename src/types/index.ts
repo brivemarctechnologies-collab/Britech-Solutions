@@ -6,13 +6,15 @@ export interface Service {
     benefit: string;
 }
 
+
 export interface Founder {
     id: number;
     name: string;
     role: string;
     bio: string;
-    image?: string;
+    image: string;
 }
+
 
 export interface PortfolioItem {
     id: number;

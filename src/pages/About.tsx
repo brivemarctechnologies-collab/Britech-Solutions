@@ -5,28 +5,33 @@ const About = () => {
         {
             id: 1,
             name: 'Brighton Wandera',
-            role: 'Co-Founder & Lead Developer',
-            bio: 'Full-stack expert specializing in modern web technologies and AI integration',
+            role: 'AI Engineer & Frontend Developer',
+            bio: 'AI-focused developer building intelligent, high-performance user interfaces.',
+            image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e',
         },
         {
             id: 2,
             name: 'Muola Veronica',
-            role: 'Co-Founder & Design Director',
-            bio: 'Creative visionary bringing beautiful, user-centric designs to life',
+            role: 'Design Director & Cybersecurity Lead',
+            bio: 'Oversees design, cybersecurity, and customer experience strategy.',
+            image: 'https://images.unsplash.com/photo-1589571894960-20bbe2828d0a',
         },
         {
             id: 3,
             name: 'Marcos Solomon',
-            role: 'Co-Founder & Systems Architect',
-            bio: 'Backend specialist ensuring scalable and robust system architecture',
+            role: 'Cybersecurity Expert & Systems Architect',
+            bio: 'Leads system architecture and visual brand through graphic design.',
+            image: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1',
         },
         {
             id: 4,
-            name: 'Kariuki Evans',
-            role: 'Co-Founder & Marketing Strategist',
-            bio: 'Digital marketing expert driving growth through strategic campaigns',
+            name: 'Evans Kariuki',
+            role: 'Backend Engineer & IoT Specialist',
+            bio: 'Builds scalable backend systems and connected IoT solutions.',
+            image: 'https://images.unsplash.com/photo-1614289371518-722f2615943d',
         },
     ];
+    
 
     return (
         <div className="min-h-screen bg-deep-black pt-24">
@@ -114,21 +119,30 @@ const About = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {founders.map((founder) => (
-                            <div key={founder.id} className="glass-card p-6 text-center group">
-                                <div className="relative mb-6 mx-auto w-32 h-32">
-                                    <div className="w-full h-full rounded-full bg-gradient-to-br from-gold-500 to-gold-400 flex items-center justify-center text-4xl font-serif font-bold text-deep-black">
-                                        {founder.name.charAt(0)}
-                                    </div>
-                                    <div className="absolute inset-0 rounded-full ring-4 ring-gold-400/30"></div>
-                                </div>
+    {founders.map((founder) => (
+        <div key={founder.id} className="glass-card p-6 text-center group">
+            <div className="relative mb-6 mx-auto w-32 h-32">
+                <img
+                    src={founder.image}
+                    alt={founder.name}
+                    className="w-full h-full rounded-full object-cover"
+                />
+                <div className="absolute inset-0 rounded-full ring-4 ring-gold-400/30"></div>
+            </div>
 
-                                <h4 className="text-xl font-serif font-bold text-white mb-2">{founder.name}</h4>
-                                <p className="text-sm text-gold-400 mb-3 font-medium">{founder.role}</p>
-                                <p className="text-sm text-gray-400 leading-relaxed">{founder.bio}</p>
-                            </div>
-                        ))}
-                    </div>
+            <h4 className="text-xl font-serif font-bold text-white mb-2">
+                {founder.name}
+            </h4>
+            <p className="text-sm text-gold-400 mb-3 font-medium">
+                {founder.role}
+            </p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+                {founder.bio}
+            </p>
+        </div>
+    ))}
+</div>
+
                 </div>
             </section>
 
