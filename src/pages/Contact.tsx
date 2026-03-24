@@ -17,7 +17,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // ✅ AUTO-FILL + SCROLL
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const service = params.get("service");
@@ -44,7 +43,6 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      // 📩 SEND TO YOU
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -58,17 +56,20 @@ const Contact = () => {
         EMAILJS_PUBLIC_KEY
       );
 
-      // 📩 AUTO REPLY TO USER (optional but recommended)
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        "template_auto_reply",
-        {
-          to_name: formData.name,
-          to_email: formData.email,
-          service_interest: serviceInterest,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          "template_5micqmr",
+          {
+            to_name: formData.name,
+            to_email: formData.email,
+            service_interest: serviceInterest,
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+      } catch (autoError) {
+        console.warn("Auto-reply failed:", autoError);
+      }
 
       setSubmitStatus('success');
 
@@ -77,7 +78,7 @@ const Contact = () => {
       setServiceInterest('');
 
     } catch (error) {
-      console.error(error);
+      console.error("Main email failed:", error);
       setSubmitStatus('error');
     }
 
@@ -90,7 +91,6 @@ const Contact = () => {
     else setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ WHATSAPP
   const handleWhatsApp = () => {
     const phoneNumber = "254717770536";
 
@@ -108,93 +108,142 @@ Message: ${formData.message || "I'd like more details."}`;
   return (
     <div className="min-h-screen bg-deep-black pt-24">
 
+      {/* HERO */}
+      <section className="bg-gradient-to-b from-charcoal-200 to-deep-black py-16 text-center">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+          Get in <span className="gradient-text">Touch</span>
+        </h1>
+        <p className="text-gray-300 max-w-2xl mx-auto">
+          Ready to start your project? Let’s bring your vision to life.
+        </p>
+      </section>
+
+      {/* CONTACT SECTION */}
       <section id="contact-section" className="py-16 scroll-mt-24">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-5 gap-12">
 
-          <h1 className="text-3xl font-bold text-white mb-6 text-center">
-            Contact Us
-          </h1>
+          {/* LEFT INFO */}
+          <div className="lg:col-span-2 space-y-6">
 
-          {submitStatus === 'success' && (
-            <div className="mb-4 text-green-400">
-              ✓ Message sent successfully
+            <div className="glass-card p-8">
+              <h2 className="text-xl font-bold text-white mb-6">
+                Contact Information
+              </h2>
+
+              <p className="text-gray-400 text-sm">Phone</p>
+              <p className="text-white mb-4">+254 717 770 536</p>
+
+              <p className="text-gray-400 text-sm">Email</p>
+              <p className="text-white mb-4">brivemarctechnologies@gmail.com</p>
+
+              <p className="text-gray-400 text-sm">Location</p>
+              <p className="text-white">Nairobi, Kenya</p>
             </div>
-          )}
 
-          {submitStatus === 'error' && (
-            <div className="mb-4 text-red-400">
-              ✗ Error sending message
+            <div className="glass-card p-8">
+              <h3 className="text-white font-bold mb-4">Business Hours</h3>
+              <p className="text-gray-300">Mon - Fri: 8AM - 6PM</p>
+              <p className="text-gray-300">Sat: 9AM - 4PM</p>
+              <p className="text-gray-500">Sun: Closed</p>
             </div>
-          )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          </div>
 
-            <input
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 bg-black border border-gray-700 text-white"
-            />
+          {/* FORM */}
+          <div className="lg:col-span-3">
+            <div className="glass-card p-8">
 
-            <input
-              name="email"
-              type="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 bg-black border border-gray-700 text-white"
-            />
+              <h2 className="text-2xl font-bold text-white mb-6">
+                Send a Message
+              </h2>
 
-            <input
-              name="phone"
-              placeholder="Phone (optional)"
-              value={phone}
-              onChange={handleChange}
-              className="w-full p-3 bg-black border border-gray-700 text-white"
-            />
+              {submitStatus === 'success' && (
+                <div className="mb-4 p-4 bg-green-500/20 text-green-400 rounded">
+                  ✓ Message sent successfully
+                </div>
+              )}
 
-            {/* 🔥 YOUR REQUIRED LABEL */}
-            <label className="block text-sm font-medium text-gray-300">
-              Service Interest {serviceInterest && "(Auto-selected)"}
-            </label>
+              {submitStatus === 'error' && (
+                <div className="mb-4 p-4 bg-red-500/20 text-red-400 rounded">
+                  ✗ Error sending message
+                </div>
+              )}
 
-            <input
-              name="serviceInterest"
-              value={serviceInterest}
-              onChange={handleChange}
-              className="w-full p-3 bg-black border border-gray-700 text-white"
-            />
+              <form onSubmit={handleSubmit} className="space-y-6">
 
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full p-3 bg-black border border-gray-700 text-white"
-            />
+                <div className="grid md:grid-cols-2 gap-6">
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-gold-400 text-black py-3"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
+                  <input
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="input-style"
+                  />
 
-            {/* ✅ WHATSAPP BUTTON */}
-            <button
-              type="button"
-              onClick={handleWhatsApp}
-              className="w-full border border-green-500 text-green-400 py-3 hover:bg-green-500 hover:text-white transition"
-            >
-              Chat on WhatsApp
-            </button>
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="input-style"
+                  />
 
-          </form>
+                  <input
+                    name="phone"
+                    placeholder="Phone"
+                    value={phone}
+                    onChange={handleChange}
+                    className="input-style"
+                  />
+
+                  <div>
+                    <label className="text-sm text-gray-300">
+                      Service Interest {serviceInterest && "(Auto-selected)"}
+                    </label>
+                    <input
+                      name="serviceInterest"
+                      value={serviceInterest}
+                      onChange={handleChange}
+                      className="input-style mt-2"
+                    />
+                  </div>
+
+                </div>
+
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="input-style"
+                />
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleWhatsApp}
+                  className="w-full border border-green-500 text-green-400 py-3 rounded-lg hover:bg-green-500 hover:text-white transition"
+                >
+                  Chat on WhatsApp
+                </button>
+
+              </form>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
