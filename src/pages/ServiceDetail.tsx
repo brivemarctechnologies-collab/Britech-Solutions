@@ -15,26 +15,21 @@ const ServiceDetail = () => {
 
   const Icon = (Icons as any)[service.icon] || Icons.Box;
 
-  const handleContactClick = () => {
-    const section = document.getElementById("contact-section");
 
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.location.href = "/contact";
-    }
 
-    console.log("CTA Click:", service.name);
-  };
+const handleContactClick = () => {
+  navigate(`/contact?service=${encodeURIComponent(service.name)}#contact-section`);
+};
 
   const handleWhatsApp = () => {
     const message = `Hello, I'm interested in your ${service.name} service.`;
-    const phone = "2547XXXXXXXX";
+    const phone = "254717770536";
 
-    window.open(
-      `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+window.open(
+  `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+  "_blank",
+  "noopener,noreferrer"
+);
 
     console.log("WhatsApp Click:", service.name);
   };
