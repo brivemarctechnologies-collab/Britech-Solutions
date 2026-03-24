@@ -1,54 +1,52 @@
 import { useParams, useNavigate } from "react-router-dom";
-import type { Founder } from "../types";
+import foundersData from "../data/founders.json";
+import { useEffect, useRef, useState } from "react";
 
-const founders: (Founder & { story: string; video?: string })[] = [
-  {
-    id: 1,
-    name: "Brighton Wandera",
-    role: "Android Dev, AI Engineer & Frontend Developer",
-    bio: "AI-focused developer building intelligent, high-performance user interfaces and android applications.",
-    image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1",
-    story:
-      "Brighton specializes in building intelligent systems that merge AI with real-world applications. His work focuses on performance, scalability, and user-centric design.",
-    //video: "/videos/brighton.mp4", // optional
-  },
-  {
-    id: 2,
-    name: "Muola Veronica",
-    role: "Design Director & Cybersecurity Lead",
-    bio: "Oversees design, cybersecurity, and customer experience strategy.",
-    image: "/images/Vee.jpeg",
-    story:
-      "Veronica leads the design vision and ensures that every product is both secure and intuitive. She blends creativity with technical precision.",
-    //video: "/videos/vee.mp4",
-  },
-  {
-    id: 3,
-    name: "Marcos Solomon",
-    role: "Cybersecurity Expert & Systems Architect",
-    bio: "Leads system architecture and visual brand through graphic design.",
-    image: "/images/Marcos.jpeg",
-    story:
-      "Marcos designs scalable systems and ensures robust security across all platforms, while also contributing to visual branding.",
-    //video: "/videos/marcos.mp4",
-  },
-  {
-    id: 4,
-    name: "Evans Kariuki",
-    role: "Backend Engineer & IoT Specialist",
-    bio: "Builds scalable backend systems and connected IoT solutions.",
-    image: "/images/VansKE.jpeg",
-    story:
-      "Evans focuses on backend infrastructure and IoT integrations, enabling seamless communication between systems and devices.",
-    video: "/videos/evans.mp4",
-  },
-];
+type FounderDetailsType = {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  story: string;
+  video?: string;
+  thumbnail?: string;
+};
 
 const FounderDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const founders = (foundersData as unknown as FounderDetailsType[]).map((f) => ({
+    ...f,
+    id: Number(f.id),
+  }));
   const founder = founders.find((f) => f.id === Number(id));
+
+  // ===== STATE =====
+  const videoRef = useRef<HTMLDivElement | null>(null);
+  const [loadVideo, setLoadVideo] = useState(false);
+  const [playVideo, setPlayVideo] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // ===== INTERSECTION OBSERVER (lazy video trigger) =====
+  useEffect(() => {
+    if (!videoRef.current || !founder?.video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadVideo(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => observer.disconnect();
+  }, [founder?.video]);
 
   if (!founder) {
     return (
@@ -60,32 +58,36 @@ const FounderDetails = () => {
 
   return (
     <div className="min-h-screen bg-deep-black pt-24">
-      
-      {/* Back Button */}
+
+      {/* ===== BACK BUTTON ===== */}
       <div className="max-w-6xl mx-auto px-4 mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="text-gold-400 hover:underline"
+          className="text-gold-400 hover:underline transition"
         >
           ← Back
         </button>
       </div>
 
-      {/* Profile Section */}
+      {/* ===== PROFILE SECTION ===== */}
       <section className="section-container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          
-          {/* Image */}
-          <div className="relative w-64 h-64 mx-auto md:w-80 md:h-80">
+
+          {/* IMAGE WITH BLUR-UP EFFECT */}
+          <div className="relative w-64 h-64 mx-auto md:w-80 md:h-80 overflow-hidden rounded-full">
             <img
               src={founder.image}
               alt={founder.name}
-              className="w-full h-full object-cover rounded-full"
+              loading="lazy"
+              onLoad={() => setImageLoaded(true)}
+              className={`w-full h-full object-cover transition duration-700 ${
+                imageLoaded ? "blur-0 scale-100" : "blur-md scale-110"
+              }`}
             />
             <div className="absolute inset-0 rounded-full ring-4 ring-gold-400/30"></div>
           </div>
 
-          {/* Info */}
+          {/* INFO */}
           <div>
             <h1 className="text-4xl font-serif font-bold text-white mb-3">
               {founder.name}
@@ -111,20 +113,64 @@ const FounderDetails = () => {
         </div>
       </section>
 
-      {/* 🎥 Video Section (Conditional) */}
+      {/* ===== VIDEO SECTION ===== */}
       {founder.video && (
-        <section className="section-container">
+        <section className="section-container" ref={videoRef}>
           <div className="glass-card p-6">
             <h2 className="text-2xl font-serif text-white mb-6 text-center">
               Meet {founder.name}
             </h2>
 
-            <div className="w-full aspect-video rounded-xl overflow-hidden">
-              <video
-                src={founder.video}
-                controls
-                className="w-full h-full object-cover"
-              />
+            <div className="w-full aspect-video rounded-xl overflow-hidden relative bg-black/40">
+
+              {/* STAGE 1: BEFORE LOAD */}
+              {!loadVideo && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-10 h-10 border-2 border-gold-400 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
+
+              {/* STAGE 2: THUMBNAIL */}
+              {loadVideo && !playVideo && (
+                <div
+                  className="relative w-full h-full cursor-pointer group"
+                  onClick={() => setPlayVideo(true)}
+                >
+                  <img
+                    src={founder.thumbnail || founder.image}
+                    alt={founder.name}
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  {/* overlay */}
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition" />
+
+                  {/* play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-gold-400 flex items-center justify-center shadow-lg transform transition group-hover:scale-110 group-hover:shadow-gold-400/40">
+                      <svg
+                        className="w-8 h-8 text-deep-black ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* STAGE 3: VIDEO */}
+              {loadVideo && playVideo && (
+                <video
+                  src={founder.video}
+                  controls
+                  autoPlay
+                  preload="none"
+                  className="w-full h-full object-cover animate-fade-in"
+                />
+              )}
+
             </div>
           </div>
         </section>

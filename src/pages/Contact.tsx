@@ -288,13 +288,6 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                                     </button>
                                 </form>
 
-                                {/* EmailJS Setup Note */}
-                                <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                                    <p className="text-xs text-gray-400">
-                                        <strong className="text-blue-400">Note:</strong> EmailJS configuration required for form to send emails.
-                                        Contact admin to complete setup.
-                                    </p>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "name": "Website Development",
+    "slug": "website-development",
+    "category": "Development",
+    "icon": "Globe",
+    "shortDescription": "Professional, responsive websites built with modern technologies",
+    "fullDescription": "We create custom, high-performance websites tailored to your business needs.",
+    "features": [
+      "Responsive Design",
+      "SEO Optimized",
+      "Fast Loading Speed",
+      "Mobile-First Approach",
+      "CMS Integration",
+      "E-commerce Solutions"
+    ],
+    "benefits": [
+      "Strong online presence",
+      "24/7 availability",
+      "Professional brand image",
+      "Higher conversions"
+    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    "pricing": "Starting from KSh 25,000"
+  },
+  {
+    "id": 2,
+    "name": "System Development",
+    "slug": "system-development",
+    "category": "Development",
+    "icon": "Settings",
+    "shortDescription": "Scalable systems tailored to business operations",
+    "fullDescription": "Custom systems that streamline operations and scale with your business.",
+    "features": [
+      "Custom Software",
+      "Database Design",
+      "API Development",
+      "System Integration"
+    ],
+    "benefits": [
+      "Efficiency",
+      "Automation",
+      "Scalability",
+      "Reduced manual work"
+    ],
+    "technologies": ["Node.js", "Python", "PostgreSQL"],
+    "pricing": "Custom quote"
+  },
+  {
+    "id": 3,
+    "name": "AI Automation",
+    "slug": "ai-automation",
+    "category": "AI & Automation",
+    "icon": "Cpu",
+    "shortDescription": "Automate workflows using AI",
+    "fullDescription": "AI-powered automation to reduce costs and improve efficiency.",
+    "features": [
+      "Process Automation",
+      "Chatbots",
+      "Predictive Analytics"
+    ],
+    "benefits": [
+      "Save time",
+      "Reduce errors",
+      "Data-driven decisions"
+    ],
+    "technologies": ["Python", "TensorFlow"],
+    "pricing": "Starting from KSh 50,000"
+  },
+  {
+    "id": 4,
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "category": "Marketing",
+    "icon": "Megaphone",
+    "shortDescription": "Strategic campaigns for growth",
+    "fullDescription": "Marketing strategies designed to drive engagement and ROI.",
+    "features": [
+      "Social Media",
+      "Email Campaigns",
+      "Content Marketing"
+    ],
+    "benefits": [
+      "Brand awareness",
+      "Lead generation",
+      "Customer engagement"
+    ],
+    "pricing": "Starting from KSh 15,000/month"
+  },
+  {
+    "id": 5,
+    "name": "SEO Optimization",
+    "slug": "seo-optimization",
+    "category": "Marketing",
+    "icon": "Search",
+    "shortDescription": "Improve visibility on search engines",
+    "fullDescription": "SEO strategies to rank higher and drive organic traffic.",
+    "features": [
+      "Keyword Research",
+      "On-Page SEO",
+      "Technical SEO"
+    ],
+    "benefits": [
+      "More traffic",
+      "Higher rankings",
+      "Credibility"
+    ],
+    "pricing": "Starting from KSh 20,000/month"
+  }
+]
