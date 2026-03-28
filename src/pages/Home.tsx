@@ -22,8 +22,8 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
-        <div className="section-container grid md:grid-cols-2 gap-12 items-center">
+      <section className="relative min-h-[80vh] flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
           {/* LEFT: TEXT */}
           <div>
             <div className="inline-flex items-center glass-card px-4 py-2 mb-6">
@@ -56,7 +56,7 @@ const Home = () => {
           {/* RIGHT: IMAGE */}
           <div className="relative">
             <img
-              src="../../public/res/hero-tech.png" // 👈 you add this
+              src={`${import.meta.env.BASE_URL}res/hero-tech.png`}
               alt="Technology Solutions"
               className="rounded-xl shadow-2xl border border-white/10"
             />
@@ -99,7 +99,7 @@ const Home = () => {
 
       {/* SERVICES */}
       <section className="bg-deep-black py-2">
-        <div className="section-container">
+        <div className="section-container !py-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif font-bold text-white mb-4">
               Our <span className="gradient-text">Services</span>
