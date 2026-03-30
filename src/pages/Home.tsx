@@ -63,7 +63,7 @@ const Home = () => {
             /> */}
             <img
               src={heroImg}
-              alt="Technologyia Solutions"
+              alt="Technology Solutions"
               className="border-4 border-red-500"
             />
           </div>
