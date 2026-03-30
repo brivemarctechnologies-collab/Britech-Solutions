@@ -56,15 +56,10 @@ const Home = () => {
 
           {/* RIGHT: IMAGE */}
           <div className="relative">
-            {/* <img
-              src={heroImg}
-              alt="Technology Solutions"
-              className="rounded-xl shadow-2xl border border-white/10"
-            /> */}
             <img
               src={heroImg}
               alt="Technology Solutions"
-              className="border-4 border-red-500"
+              className="rounded-xl shadow-2xl border border-white/10"
             />
           </div>
         </div>
