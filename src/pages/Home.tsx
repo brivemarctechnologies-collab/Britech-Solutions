@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import servicesData from "../data/services.json";
 import * as Icons from "lucide-react";
 import SocialProof from "../components/SocialProof";
+import heroImg from "../assets/hero-tech.png";
 
 type Service = {
   id: number;
@@ -56,10 +57,15 @@ const Home = () => {
           {/* RIGHT: IMAGE */}
           <div className="relative">
             <img
-              src={`${import.meta.env.BASE_URL}resources/hero-tech.png`}
+              src={heroImg}
               alt="Technology Solutions"
               className="rounded-xl shadow-2xl border border-white/10"
             />
+            {/* <img
+              src={`${import.meta.env.BASE_URL}resources/hero-tech.png`}
+              alt="Technology Solutions"
+              className="rounded-xl shadow-2xl border border-white/10"
+            /> */}
           </div>
         </div>
       </section>
