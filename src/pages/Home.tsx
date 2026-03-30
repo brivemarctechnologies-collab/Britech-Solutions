@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import servicesData from "../data/services.json";
 import * as Icons from "lucide-react";
+import SocialProof from "../components/SocialProof";
 
 type Service = {
   id: number;
@@ -20,13 +21,54 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      {/* ===== HERO ===== */}
+      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
+        <div className="section-container grid md:grid-cols-2 gap-12 items-center">
+          {/* LEFT: TEXT */}
+          <div>
+            <div className="inline-flex items-center glass-card px-4 py-2 mb-6">
+              <span className="h-2 w-2 rounded-full bg-gold-400 mr-2"></span>
+              <span className="text-sm text-gray-300">
+                Registered in Kenya • Trusted Agency
+              </span>
+            </div>
+
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
+              Smart & Secure{" "}
+              <span className="gradient-text">Tech Solutions</span>
+            </h1>
+
+            <p className="text-gray-300 mb-8">
+              We design and build modern systems, websites, and AI solutions
+              that help businesses grow and scale.
+            </p>
+
+            <div className="flex gap-4">
+              <Link to="/contact" className="btn-primary">
+                Get a Quote
+              </Link>
+              <Link to="/services" className="btn-secondary">
+                Explore Services
+              </Link>
+            </div>
+          </div>
+
+          {/* RIGHT: IMAGE */}
+          <div className="relative">
+            <img
+              src="../../public/res/hero-tech.png" // 👈 you add this
+              alt="Technology Solutions"
+              className="rounded-xl shadow-2xl border border-white/10"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
+      {/* <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black">
         <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 via-transparent to-gold-400/5"></div>
 
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-4 py-20">
-
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-4 py-16">
           <div className="inline-flex items-center glass-card px-6 py-2 mb-8">
             <span className="h-2 w-2 rounded-full bg-gold-400 mr-3"></span>
             <span className="text-sm text-gray-300">
@@ -53,12 +95,11 @@ const Home = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* SERVICES */}
-      <section className="bg-deep-black py-20">
+      <section className="bg-deep-black py-2">
         <div className="section-container">
-
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif font-bold text-white mb-4">
               Our <span className="gradient-text">Services</span>
@@ -67,7 +108,6 @@ const Home = () => {
 
           {/* GRID */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
             {featuredServices.map((service) => {
               const Icon = (Icons as any)[service.icon] || Icons.Box;
 
@@ -116,10 +156,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CONTACT CTA */}
-      <section className="bg-gradient-to-b from-deep-black to-charcoal-200 py-20">
-        <div className="section-container text-center">
+      {/* SOCIAL PROOF */}
+      <SocialProof />
 
+      {/* CONTACT CTA */}
+      <section className="bg-gradient-to-b from-deep-black to-charcoal-200 py-2">
+        <div className="section-container text-center">
           <div className="glass-card p-12">
             <h2 className="text-3xl font-serif font-bold text-white mb-4">
               Ready to Start?
@@ -130,17 +172,23 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-
-              <a href="tel:+254717770536" className="glass-card p-6 flex items-center gap-3">
+              <a
+                href="tel:+254717770536"
+                className="glass-card p-6 flex items-center gap-3"
+              >
                 <Icons.Phone className="w-5 h-5 text-gold-400" />
                 <span className="text-white">0717770536</span>
               </a>
 
-              <a href="mailto:brivemarctechnologies@gmail.com" className="glass-card p-6 flex items-center gap-3">
+              <a
+                href="mailto:brivemarctechnologies@gmail.com"
+                className="glass-card p-6 flex items-center gap-3"
+              >
                 <Icons.Mail className="w-5 h-5 text-gold-400" />
-                <span className="text-white">brivemarctechnologies@gmail.com</span>
+                <span className="text-white">
+                  brivemarctechnologies@gmail.com
+                </span>
               </a>
-
             </div>
 
             <div className="mt-8">
@@ -148,7 +196,6 @@ const Home = () => {
                 Get Started
               </Link>
             </div>
-
           </div>
         </div>
       </section>
@@ -157,7 +204,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-

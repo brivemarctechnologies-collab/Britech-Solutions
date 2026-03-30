@@ -1,182 +1,223 @@
-import { useState, useRef, useEffect } from 'react';
-import { FaComments } from 'react-icons/fa6';
+import { useState, useRef, useEffect } from "react";
+import { FaComments } from "react-icons/fa6";
 
 interface Message {
-    id: number;
-    text: string;
-    sender: 'user' | 'bot';
-    timestamp: Date;
+  id: number;
+  text: string;
+  sender: "user" | "bot";
+  timestamp: Date;
 }
 
 const Chatbot = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: 1,
-            text: "Hello! 👋 I'm here to help you learn about Brivemarc Technologies. How can I assist you today?",
-            sender: 'bot',
-            timestamp: new Date(),
-        },
-    ]);
-    const [inputValue, setInputValue] = useState('');
-    const [isTyping, setIsTyping] = useState(false);
-    const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 1,
+      text: "Hello! 👋 I'm here to help you learn about Brivemarc Technologies. How can I assist you today?",
+      sender: "bot",
+      timestamp: new Date(),
+    },
+  ]);
+  const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const getResponse = (userMessage: string): string => {
+    const lower = userMessage.toLowerCase();
+
+    if (lower.match(/\b(hi|hello|hey)\b/)) {
+      return "Hello! Welcome to Brivemarc Technologies. We're a registered Kenyan technology agency. What would you like to know?";
+    }
+
+    if (lower.includes("service")) {
+      return "We offer 11 services:\n\n1. Website Development\n2. System Development\n3. AI Automation\n4. Digital Marketing\n5. SEO Optimization\n6. App Development\n7. Logo Design\n8. Brand Identity\n9. IoT Integration\n10. Cloud Solutions\n11. Cybersecurity\n\nWhich interests you?";
+    }
+
+    if (lower.includes("price") || lower.includes("cost")) {
+      return "For pricing:\n📞 Call: +254717770536\n📧 Email: brivemarctechnologies@gmail.com\nWe offer free consultations!";
+    }
+
+    if (lower.includes("contact")) {
+      return "📞 +254717770536\n📧 brivemarctechnologies@gmail.com\n📍 Nairobi, Kenya\n\nMon-Fri: 8AM-6PM\nSat: 9AM-4PM";
+    }
+
+    if (lower.includes("about") || lower.includes("who")) {
+      return "Brivemarc Technologies is a registered Kenyan tech agency with 4 founders: Brighton Wandera, Muola Veronica, Marcos Solomon, and Kariuki Evans. We deliver Smart • Secure solutions!";
+    }
+
+    return "I can help you with:\n• Our services\n• Pricing\n• Contact info\n• About us\n\nOr call +254717770536 for immediate help!";
+  };
+
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+
+    const userMessage: Message = {
+      id: messages.length + 1,
+      text: inputValue,
+      sender: "user",
+      timestamp: new Date(),
     };
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+    setMessages([...messages, userMessage]);
+    setInputValue("");
+    setIsTyping(true);
 
-    const getResponse = (userMessage: string): string => {
-        const lower = userMessage.toLowerCase();
+    setTimeout(() => {
+      const botResponse: Message = {
+        id: messages.length + 2,
+        text: getResponse(inputValue),
+        sender: "bot",
+        timestamp: new Date(),
+      };
 
-        if (lower.match(/\b(hi|hello|hey)\b/)) {
-            return "Hello! Welcome to Brivemarc Technologies. We're a registered Kenyan technology agency. What would you like to know?";
-        }
+      setMessages((prev) => [...prev, botResponse]);
+      setIsTyping(false);
+    }, 1000);
+  };
 
-        if (lower.includes('service')) {
-            return "We offer 11 services:\n\n1. Website Development\n2. System Development\n3. AI Automation\n4. Digital Marketing\n5. SEO Optimization\n6. App Development\n7. Logo Design\n8. Brand Identity\n9. IoT Integration\n10. Cloud Solutions\n11. Cybersecurity\n\nWhich interests you?";
-        }
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
 
-        if (lower.includes('price') || lower.includes('cost')) {
-            return "For pricing:\n📞 Call: 0717770536\n📧 Email: info@brivemarc.co.ke\nWe offer free consultations!";
-        }
+  return (
+    <>
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+        >
+          <FaComments className="w-8 h-8" />
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-deep-black"></span>
+        </button>
+      )}
 
-        if (lower.includes('contact')) {
-            return "📞 0717770536\n📧 info@brivemarc.co.ke\n📍 Nairobi, Kenya\n\nMon-Fri: 8AM-6PM\nSat: 9AM-4PM";
-        }
+      {isOpen && (
+        <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] flex flex-col glass-card shadow-2xl">
+          <div className="bg-gradient-to-r from-gold-500 to-gold-400 p-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo.jpg"
+                alt="Brivemarc"
+                className="w-10 h-10 rounded-full"
+              />
+              <div>
+                <h3 className="font-serif font-bold text-deep-black">
+                  Brivemarc Bot
+                </h3>
+                <p className="text-xs text-deep-black/80">Online</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-8 h-8 rounded-full bg-deep-black/20 hover:bg-deep-black/40 transition-colors flex items-center justify-center"
+            >
+              <svg
+                className="w-5 h-5 text-deep-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
 
-        if (lower.includes('about') || lower.includes('who')) {
-            return "Brivemarc Technologies is a registered Kenyan tech agency with 4 founders: Brighton Wandera, Muola Veronica, Marcos Solomon, and Kariuki Evans. We deliver Smart • Secure solutions!";
-        }
-
-        return "I can help you with:\n• Our services\n• Pricing\n• Contact info\n• About us\n\nOr call 0717770536 for immediate help!";
-    };
-
-    const handleSend = () => {
-        if (!inputValue.trim()) return;
-
-        const userMessage: Message = {
-            id: messages.length + 1,
-            text: inputValue,
-            sender: 'user',
-            timestamp: new Date(),
-        };
-
-        setMessages([...messages, userMessage]);
-        setInputValue('');
-        setIsTyping(true);
-
-        setTimeout(() => {
-            const botResponse: Message = {
-                id: messages.length + 2,
-                text: getResponse(inputValue),
-                sender: 'bot',
-                timestamp: new Date(),
-            };
-
-            setMessages((prev) => [...prev, botResponse]);
-            setIsTyping(false);
-        }, 1000);
-    };
-
-    const handleKeyPress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSend();
-        }
-    };
-
-    return (
-        <>
-            {!isOpen && (
-                <button
-                    onClick={() => setIsOpen(true)}
-                    className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-deep-black/40">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <div
+                  className={`max-w-[80%] rounded-2xl p-3 ${
+                    message.sender === "user"
+                      ? "bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black"
+                      : "glass-card text-white"
+                  }`}
                 >
-                    <FaComments className="w-8 h-8" />
-                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-deep-black"></span>
-                </button>
-            )}
-
-            {isOpen && (
-                <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] flex flex-col glass-card shadow-2xl">
-                    <div className="bg-gradient-to-r from-gold-500 to-gold-400 p-4 rounded-t-2xl flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <img src="/logo.jpg" alt="Brivemarc" className="w-10 h-10 rounded-full" />
-                            <div>
-                                <h3 className="font-serif font-bold text-deep-black">Brivemarc Bot</h3>
-                                <p className="text-xs text-deep-black/80">Online</p>
-                            </div>
-                        </div>
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="w-8 h-8 rounded-full bg-deep-black/20 hover:bg-deep-black/40 transition-colors flex items-center justify-center"
-                        >
-                            <svg className="w-5 h-5 text-deep-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-deep-black/40">
-                        {messages.map((message) => (
-                            <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`max-w-[80%] rounded-2xl p-3 ${message.sender === 'user'
-                                    ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black'
-                                    : 'glass-card text-white'
-                                    }`}>
-                                    <p className="text-sm whitespace-pre-line">{message.text}</p>
-                                    <p className="text-xs mt-1 opacity-70">
-                                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-
-                        {isTyping && (
-                            <div className="flex justify-start">
-                                <div className="glass-card rounded-2xl p-3">
-                                    <div className="flex gap-1">
-                                        <span className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"></span>
-                                        <span className="w-2 h-2 bg-gold-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
-                                        <span className="w-2 h-2 bg-gold-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
-                        <div ref={messagesEndRef} />
-                    </div>
-
-                    <div className="p-4 bg-deep-black/60 rounded-b-2xl border-t border-white/10">
-                        <div className="flex gap-2">
-                            <input
-                                type="text"
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                onKeyPress={handleKeyPress}
-                                placeholder="Type your message..."
-                                className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 transition-all text-sm"
-                            />
-                            <button
-                                onClick={handleSend}
-                                disabled={!inputValue.trim()}
-                                className="w-10 h-10 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-50"
-                            >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                  <p className="text-sm whitespace-pre-line">{message.text}</p>
+                  <p className="text-xs mt-1 opacity-70">
+                    {message.timestamp.toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
                 </div>
+              </div>
+            ))}
+
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="glass-card rounded-2xl p-3">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"></span>
+                    <span
+                      className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.2s" }}
+                    ></span>
+                    <span
+                      className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.4s" }}
+                    ></span>
+                  </div>
+                </div>
+              </div>
             )}
-        </>
-    );
+
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div className="p-4 bg-deep-black/60 rounded-b-2xl border-t border-white/10">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+                className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 transition-all text-sm"
+              />
+              <button
+                onClick={handleSend}
+                disabled={!inputValue.trim()}
+                className="w-10 h-10 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-50"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Chatbot;

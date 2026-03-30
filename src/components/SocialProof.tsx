@@ -1,96 +1,91 @@
-import type { SocialLink } from '../types';
+import {
+  FaXTwitter,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+} from "react-icons/fa6";
 
 const SocialProof = () => {
-    const socialLinks: SocialLink[] = [
-        {
-            platform: 'YouTube',
-            url: 'https://youtube.com/@Brivemarc-technologies',
-            icon: '▶️',
-        },
-        {
-            platform: 'LinkedIn',
-            url: 'https://linkedin.com/company/brivemarc-technologies',
-            icon: '💼',
-        },
-        {
-            platform: 'Twitter',
-            url: 'https://twitter.com/Brivemarc-technologies',
-            icon: '🐦',
-        },
-        {
-            platform: 'Instagram',
-            url: 'https://instagram.com/Brivemarc-technologies',
-            icon: '📷',
-        },
-        {
-            platform: 'Facebook',
-            url: 'https://facebook.com/Brivemarc-technologies',
-            icon: '📘',
-        },
-    ];
+  const socialLinks = [
+    {
+      platform: "Twitter",
+      url: "https://x.com/Brivemarc",
+      icon: FaXTwitter,
+    },
+    {
+      platform: "Facebook",
+      url: "https://www.facebook.com/BrivemarcTechnologies",
+      icon: FaFacebook,
+    },
+    {
+      platform: "Instagram",
+      url: "https://www.instagram.com/brivemarc_technologies?igsh=Y283d2NscnI1NGVp",
+      icon: FaInstagram,
+    },
+    {
+      platform: "LinkedIn",
+      url: "https://linkedin.com/company/brivemarc-technologies",
+      icon: FaLinkedin,
+    },
+    {
+      platform: "YouTube",
+      url: "https://youtube.com/@Brivemarc-technologies",
+      icon: FaYoutube,
+    },
+  ];
 
-    return (
-        <section id="social-proof" className="relative bg-gradient-to-b from-deep-black via-charcoal-200 to-deep-black">
-            <div className="section-container">
-                <div className="glass-card p-12 text-center">
-                    {/* Registered Badge */}
-                    <div className="mb-8">
-                        <div className="inline-flex items-center glass-card px-8 py-4 mb-6">
-                            <svg className="w-12 h-12 text-gold-400 mr-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            <div className="text-left">
-                                <p className="text-2xl font-serif font-bold text-white mb-1">Officially Registered in Kenya</p>
-                                <p className="text-gray-400">Licensed & Certified Technology Agency</p>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <section className="bg-gradient-to-b from-deep-black via-charcoal-200 to-deep-black py-20">
+      <div className="section-container">
+        <div className="glass-card p-10 text-center">
+          {/* Heading */}
+          <h3 className="text-3xl font-serif font-bold text-white mb-4">
+            Connect With Us
+          </h3>
 
-                    {/* Social Media Section */}
-                    <div className="mb-12">
-                        <h3 className="text-3xl font-serif font-bold text-white mb-4">
-                            Connect With Us
-                        </h3>
-                        <p className="text-gray-300 mb-8">
-                            Follow <span className="text-gold-400 font-medium">@Brivemarc-technologies</span> on all social media platforms
-                        </p>
+          <p className="text-gray-300 mb-10">
+            Follow Brivemarc Technologies across all platforms
+          </p>
 
-                        {/* Social Links */}
-                        <div className="flex flex-wrap justify-center gap-6">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.platform}
-                                    href={social.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="glass-card-hover p-6 flex flex-col items-center min-w-[120px]"
-                                >
-                                    <div className="text-4xl mb-3">{social.icon}</div>
-                                    <p className="text-white font-medium">{social.platform}</p>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+          {/* Icons (same as footer style) */}
+          <div className="flex justify-center gap-4 mb-12">
+            {socialLinks.map((social, i) => {
+              const Icon = social.icon;
 
-                    {/* Trust Indicators */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/10">
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">500+</div>
-                            <p className="text-gray-400">Social Media Followers</p>
-                        </div>
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">50+</div>
-                            <p className="text-gray-400">Video Tutorials</p>
-                        </div>
-                        <div>
-                            <div className="text-4xl font-bold gradient-text mb-2">5★</div>
-                            <p className="text-gray-400">Average Rating</p>
-                        </div>
-                    </div>
-                </div>
+              return (
+                <a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:border-gold-400/50 transition"
+                >
+                  <Icon className="w-5 h-5 text-gold-400" />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-white/10">
+            <div>
+              <div className="text-3xl font-bold gradient-text">500+</div>
+              <p className="text-gray-400 text-sm">Followers</p>
             </div>
-        </section>
-    );
+            <div>
+              <div className="text-3xl font-bold gradient-text">50+</div>
+              <p className="text-gray-400 text-sm">Videos</p>
+            </div>
+            <div>
+              <div className="text-3xl font-bold gradient-text">5★</div>
+              <p className="text-gray-400 text-sm">Client Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default SocialProof;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -14,9 +14,7 @@
   }
 }
 
-
 @layer components {
-
   /* Glassmorphism Card */
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
@@ -46,10 +44,8 @@
   }
 
   .input-style {
-  @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 transition-all;
-}
-
-
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 transition-all;
+  }
 
   /* Animated Background Elements */
   .animated-bg {
@@ -64,7 +60,11 @@
     position: absolute;
     width: 200%;
     height: 200%;
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(212, 175, 55, 0.1) 0%,
+      transparent 70%
+    );
     animation: wave-animation 20s linear infinite;
   }
 
@@ -100,7 +100,6 @@
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
