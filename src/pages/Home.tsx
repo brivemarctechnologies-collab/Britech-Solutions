@@ -56,7 +56,7 @@ const Home = () => {
           {/* RIGHT: IMAGE */}
           <div className="relative">
             <img
-              src={`${import.meta.env.BASE_URL}res/hero-tech.png`}
+              src={`${import.meta.env.BASE_URL}resources/hero-tech.png`}
               alt="Technology Solutions"
               className="rounded-xl shadow-2xl border border-white/10"
             />
