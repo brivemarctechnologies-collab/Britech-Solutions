@@ -3,7 +3,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaYoutube,
+  //   FaYoutube,
 } from "react-icons/fa6";
 
 const SocialProof = () => {
@@ -28,11 +28,11 @@ const SocialProof = () => {
       url: "https://linkedin.com/company/brivemarc-technologies",
       icon: FaLinkedin,
     },
-    {
-      platform: "YouTube",
-      url: "https://youtube.com/@Brivemarc-technologies",
-      icon: FaYoutube,
-    },
+    // {
+    //   platform: "YouTube",
+    //   url: "https://youtube.com/@Brivemarc-technologies",
+    //   icon: FaYoutube,
+    // },
   ];
 
   return (
