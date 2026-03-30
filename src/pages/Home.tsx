@@ -56,16 +56,16 @@ const Home = () => {
 
           {/* RIGHT: IMAGE */}
           <div className="relative">
-            <img
+            {/* <img
               src={heroImg}
               alt="Technology Solutions"
               className="rounded-xl shadow-2xl border border-white/10"
-            />
-            {/* <img
-              src={`${import.meta.env.BASE_URL}resources/hero-tech.png`}
-              alt="Technology Solutions"
-              className="rounded-xl shadow-2xl border border-white/10"
             /> */}
+            <img
+              src={heroImg}
+              alt="Technology Solutions"
+              className="border-4 border-red-500"
+            />
           </div>
         </div>
       </section>
