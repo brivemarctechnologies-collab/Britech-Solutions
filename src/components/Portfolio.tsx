@@ -1,163 +1,275 @@
-// import { useState } from 'react';
-// import type { PortfolioItem } from '../types';
+// import { useState, useRef, useEffect } from "react";
+// import Fuse from "fuse.js";
+// import { FaComments } from "react-icons/fa6";
+// import servicesData from "../data/services.json";
+// import foundersData from "../data/founders.json";
+// import contactData from "../data/contact.json";
 
-// const Portfolio = () => {
-//     const [activeFilter, setActiveFilter] = useState<string>('All');
+// interface Message {
+//   id: number;
+//   text: string;
+//   sender: "user" | "bot";
+//   timestamp: Date;
+// }
 
-//     const portfolioItems: PortfolioItem[] = [
-//         {
-//             id: 1,
-//             title: 'Corporate Website',
-//             category: 'Website',
-//             description: 'Modern corporate website with premium design and seamless user experience',
-//             image: '/portfolio-1.png',
-//             tags: ['React', 'Tailwind', 'SEO'],
-//         },
-//         {
-//             id: 2,
-//             title: 'Mobile Banking App',
-//             category: 'Mobile App',
-//             description: 'Secure mobile banking application with intuitive interface',
-//             image: '/portfolio-2.png',
-//             tags: ['React Native', 'Firebase', 'Security'],
-//         },
-//         {
-//             id: 3,
-//             title: 'AI Analytics Dashboard',
-//             category: 'AI Solution',
-//             description: 'Intelligent dashboard powered by machine learning algorithms',
-//             image: '/portfolio-3.png',
-//             tags: ['Python', 'TensorFlow', 'Data Viz'],
-//         },
-//         {
-//             id: 4,
-//             title: 'E-Commerce Platform',
-//             category: 'Website',
-//             description: 'Full-featured online store with payment integration',
-//             image: '/portfolio-1.png',
-//             tags: ['Next.js', 'Stripe', 'MongoDB'],
-//         },
-//         {
-//             id: 5,
-//             title: 'Fitness Tracking App',
-//             category: 'Mobile App',
-//             description: 'Health and fitness app with real-time tracking',
-//             image: '/portfolio-2.png',
-//             tags: ['Flutter', 'HealthKit', 'Cloud'],
-//         },
-//         {
-//             id: 6,
-//             title: 'Brand Identity Package',
-//             category: 'Graphic Design',
-//             description: 'Complete branding solution with logo and visual guidelines',
-//             image: '/portfolio-3.png',
-//             tags: ['Illustrator', 'Photoshop', 'Branding'],
-//         },
+// const Chatbot = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [messages, setMessages] = useState<Message[]>([
+//     {
+//       id: 1,
+//       text: "Hello! 👋 I'm Brivemarc Bot. I can help you learn about our services, team, pricing, and contact info. How can I help you today?",
+//       sender: "bot",
+//       timestamp: new Date(),
+//     },
+//   ]);
+//   const [inputValue, setInputValue] = useState("");
+//   const [isTyping, setIsTyping] = useState(false);
+//   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+//   const scrollToBottom = () => {
+//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+
+//   useEffect(() => {
+//     scrollToBottom();
+//   }, [messages]);
+
+//   // === Function to dynamically respond based on datasets ===
+
+//   const getResponse = (userMessage: string): string => {
+//     const lower = userMessage.toLowerCase().trim();
+
+//     // --- 1. Greetings ---
+//     const greetingKeywords = [
+//       "hi",
+//       "hello",
+//       "hey",
+//       "good morning",
+//       "good afternoon",
 //     ];
+//     if (greetingKeywords.some((k) => lower.includes(k))) {
+//       return "Hello! 👋 Welcome to Brivemarc Technologies. How can I assist you today?";
+//     }
 
-//     const categories = ['All', 'Website', 'Mobile App', 'AI Solution', 'Graphic Design'];
+//     // --- 2. About / Team ---
+//     const aboutKeywords = ["founder", "team", "about", "who"];
+//     if (aboutKeywords.some((k) => lower.includes(k))) {
+//       return (
+//         "Our team consists of:\n" +
+//         foundersData.map((f) => `${f.name} - ${f.role}`).join("\n")
+//       );
+//     }
 
-//     const filteredItems = activeFilter === 'All'
-//         ? portfolioItems
-//         : portfolioItems.filter(item => item.category === activeFilter);
+//     // --- 3. Contact Info ---
+//     const contactKeywords = ["contact", "reach", "phone", "email", "location"];
+//     if (contactKeywords.some((k) => lower.includes(k))) {
+//       return `📞 Phone: ${contactData.phone}\n📧 Email: ${contactData.email}\n📍 Location: ${contactData.location}\n\nHours:\n${Object.entries(
+//         contactData.hours,
+//       )
+//         .map(([day, time]) => `${day}: ${time}`)
+//         .join("\n")}`;
+//     }
 
-//     return (
-//         <section id="portfolio" className="relative bg-gradient-to-b from-deep-black via-charcoal-200 to-deep-black">
-//             <div className="section-container">
-//                 {/* Section Header */}
-//                 <div className="text-center mb-16 animate-fade-in">
-//                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-//                         Our <span className="gradient-text">Portfolio</span>
-//                     </h2>
-//                     <div className="w-24 h-1 bg-gradient-to-r from-gold-500 to-gold-400 mx-auto mb-6"></div>
-//                     <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-//                         Explore our showcase of innovative projects and success stories
-//                     </p>
-//                 </div>
+//     // --- 4. General Services ---
+//     const servicesKeywords = ["service", "offer", "solution", "what do you do"];
+//     if (servicesKeywords.some((k) => lower.includes(k))) {
+//       return (
+//         "Here are our services:\n\n" +
+//         servicesData
+//           .map(
+//             (s, i) =>
+//               `${i + 1}. ${s.name} - ${s.shortDescription} [${s.pricing}]`,
+//           )
+//           .join("\n")
+//       );
+//     }
 
-//                 {/* Filter Buttons */}
-//                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-//                     {categories.map((category) => (
-//                         <button
-//                             key={category}
-//                             onClick={() => setActiveFilter(category)}
-//                             className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeFilter === category
-//                                     ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black'
-//                                     : 'glass-card text-gray-300 hover:text-gold-400 hover:border-gold-400/50'
-//                                 }`}
-//                         >
-//                             {category}
-//                         </button>
-//                     ))}
-//                 </div>
+//     // --- 5. Specific Service Details or Pricing ---
+//     const fuse = new Fuse(servicesData, {
+//       keys: ["name", "slug", "category", "shortDescription"],
+//       threshold: 0.4, // 0 = exact, 1 = loose
+//     });
 
-//                 {/* Portfolio Grid */}
-//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//                     {filteredItems.map((item, index) => (
-//                         <div
-//                             key={item.id}
-//                             className="glass-card-hover overflow-hidden group"
-//                             style={{ animationDelay: `${index * 0.1}s` }}
-//                         >
-//                             {/* Image */}
-//                             <div className="relative h-64 overflow-hidden">
-//                                 <img
-//                                     src={item.image}
-//                                     alt={item.title}
-//                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-//                                 />
-//                                 <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+//     const result = fuse.search(userMessage);
+//     if (result.length > 0) {
+//       const service = result[0].item;
+//       return `💡 ${service.name}\n\n${service.fullDescription}\n\nFeatures: ${service.features.join(
+//         ", ",
+//       )}\nBenefits: ${service.benefits.join(", ")}\nTechnologies: ${
+//         service.technologies ? service.technologies.join(", ") : "Not available"
+//       }\nPricing: ${service.pricing}`;
+//     }
 
-//                                 {/* Category Badge */}
-//                                 <div className="absolute top-4 right-4 bg-gold-500 text-deep-black px-4 py-1 rounded-full text-sm font-medium">
-//                                     {item.category}
-//                                 </div>
-//                             </div>
+//     // --- 6. Fallback ---
+//     return `I can help you with:
+// • Our services
+// • Details on a specific service
+// • Team / About
+// • Pricing
+// • Contact info
 
-//                             {/* Content */}
-//                             <div className="p-6">
-//                                 <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
-//                                     {item.title}
-//                                 </h3>
-//                                 <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-//                                     {item.description}
-//                                 </p>
+// Or call ${contactData.phone} for immediate help!`;
+//   };
 
-//                                 {/* Tags */}
-//                                 <div className="flex flex-wrap gap-2">
-//                                     {item.tags.map((tag, tagIndex) => (
-//                                         <span
-//                                             key={tagIndex}
-//                                             className="text-xs px-3 py-1 rounded-full bg-white/5 text-gold-400 border border-white/10"
-//                                         >
-//                                             {tag}
-//                                         </span>
-//                                     ))}
-//                                 </div>
-//                             </div>
+//   // --- Handle sending messages ---
+//   const handleSend = () => {
+//     if (!inputValue.trim()) return;
 
-//                             {/* View Details Overlay */}
-//                             <div className="absolute inset-0 bg-deep-black/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-//                                 <button className="btn-primary">
-//                                     View Details
-//                                 </button>
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
+//     const userMessage: Message = {
+//       id: messages.length + 1,
+//       text: inputValue,
+//       sender: "user",
+//       timestamp: new Date(),
+//     };
 
-//                 {/* Bottom CTA */}
-//                 <div className="mt-16 text-center">
-//                     <p className="text-gray-300 mb-6">
-//                         Interested in seeing more of our work?
-//                     </p>
-//                     <a href="#contact" className="btn-secondary">
-//                         Discuss Your Project
-//                     </a>
-//                 </div>
+//     setMessages([...messages, userMessage]);
+//     setInputValue("");
+//     setIsTyping(true);
+
+//     setTimeout(() => {
+//       const botResponse: Message = {
+//         id: messages.length + 2,
+//         text: getResponse(inputValue),
+//         sender: "bot",
+//         timestamp: new Date(),
+//       };
+
+//       setMessages((prev) => [...prev, botResponse]);
+//       setIsTyping(false);
+//     }, 800);
+//   };
+
+//   const handleKeyPress = (e: React.KeyboardEvent) => {
+//     if (e.key === "Enter" && !e.shiftKey) {
+//       e.preventDefault();
+//       handleSend();
+//     }
+//   };
+
+//   return (
+//     <>
+//       {!isOpen && (
+//         <button
+//           onClick={() => setIsOpen(true)}
+//           className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+//         >
+//           <FaComments className="w-8 h-8" />
+//           <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-deep-black"></span>
+//         </button>
+//       )}
+
+//       {isOpen && (
+//         <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] flex flex-col glass-card shadow-2xl">
+//           <div className="bg-gradient-to-r from-gold-500 to-gold-400 p-4 rounded-t-2xl flex items-center justify-between">
+//             <div className="flex items-center gap-3">
+//               <img
+//                 src="/logo.jpg"
+//                 alt="Brivemarc"
+//                 className="w-10 h-10 rounded-full"
+//               />
+//               <div>
+//                 <h3 className="font-serif font-bold text-deep-black">
+//                   Brivemarc Bot
+//                 </h3>
+//                 <p className="text-xs text-deep-black/80">Online</p>
+//               </div>
 //             </div>
-//         </section>
-//     );
+//             <button
+//               onClick={() => setIsOpen(false)}
+//               className="w-8 h-8 rounded-full bg-deep-black/20 hover:bg-deep-black/40 transition-colors flex items-center justify-center"
+//             >
+//               <svg
+//                 className="w-5 h-5 text-deep-black"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 viewBox="0 0 24 24"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   strokeWidth={2}
+//                   d="M6 18L18 6M6 6l12 12"
+//                 />
+//               </svg>
+//             </button>
+//           </div>
+
+//           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-deep-black/40">
+//             {messages.map((message) => (
+//               <div
+//                 key={message.id}
+//                 className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+//               >
+//                 <div
+//                   className={`max-w-[80%] rounded-2xl p-3 ${message.sender === "user" ? "bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black" : "glass-card text-white"}`}
+//                 >
+//                   <p className="text-sm whitespace-pre-line">{message.text}</p>
+//                   <p className="text-xs mt-1 opacity-70">
+//                     {message.timestamp.toLocaleTimeString([], {
+//                       hour: "2-digit",
+//                       minute: "2-digit",
+//                     })}
+//                   </p>
+//                 </div>
+//               </div>
+//             ))}
+
+//             {isTyping && (
+//               <div className="flex justify-start">
+//                 <div className="glass-card rounded-2xl p-3">
+//                   <div className="flex gap-1">
+//                     <span className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"></span>
+//                     <span
+//                       className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"
+//                       style={{ animationDelay: "0.2s" }}
+//                     ></span>
+//                     <span
+//                       className="w-2 h-2 bg-gold-400 rounded-full animate-bounce"
+//                       style={{ animationDelay: "0.4s" }}
+//                     ></span>
+//                   </div>
+//                 </div>
+//               </div>
+//             )}
+
+//             <div ref={messagesEndRef} />
+//           </div>
+
+//           <div className="p-4 bg-deep-black/60 rounded-b-2xl border-t border-white/10">
+//             <div className="flex gap-2">
+//               <input
+//                 type="text"
+//                 value={inputValue}
+//                 onChange={(e) => setInputValue(e.target.value)}
+//                 onKeyPress={handleKeyPress}
+//                 placeholder="Type your message..."
+//                 className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 transition-all text-sm"
+//               />
+//               <button
+//                 onClick={handleSend}
+//                 disabled={!inputValue.trim()}
+//                 className="w-10 h-10 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 text-deep-black flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-50"
+//               >
+//                 <svg
+//                   className="w-5 h-5"
+//                   fill="none"
+//                   stroke="currentColor"
+//                   viewBox="0 0 24 24"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth={2}
+//                     d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+//                   />
+//                 </svg>
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
 // };
 
-// export default Portfolio;
+// export default Chatbot;

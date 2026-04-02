@@ -1,5 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import Fuse from "fuse.js";
 import { FaComments } from "react-icons/fa6";
+import servicesData from "../data/services.json";
+import foundersData from "../data/founders.json";
+import contactData from "../data/contact.json";
 
 interface Message {
   id: number;
@@ -13,7 +17,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! 👋 I'm here to help you learn about Brivemarc Technologies. How can I assist you today?",
+      text: "Hello! 👋 I'm Brivemarc Bot. I can help you learn about our services, team, pricing, and contact info. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -30,32 +34,145 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
+  // === Dynamic response logic ===
   const getResponse = (userMessage: string): string => {
-    const lower = userMessage.toLowerCase();
+    const cleanMsg = userMessage.toLowerCase().trim();
 
-    if (lower.match(/\b(hi|hello|hey)\b/)) {
-      return "Hello! Welcome to Brivemarc Technologies. We're a registered Kenyan technology agency. What would you like to know?";
+    // --- Greetings ---
+    if (/\b(hi|hello|hey|good morning|good afternoon)\b/.test(cleanMsg)) {
+      return "Hello! 👋 Welcome to Brivemarc Technologies. How can I assist you today?";
     }
 
-    if (lower.includes("service")) {
-      return "We offer 11 services:\n\n1. Website Development\n2. System Development\n3. AI Automation\n4. Digital Marketing\n5. SEO Optimization\n6. App Development\n7. Logo Design\n8. Brand Identity\n9. IoT Integration\n10. Cloud Solutions\n11. Cybersecurity\n\nWhich interests you?";
+    // --- Contact info ---
+    if (/\b(contact|reach|phone|email|location)\b/.test(cleanMsg)) {
+      return `📞 Phone: ${contactData.phone}\n📧 Email: ${contactData.email}\n📌 Location: ${contactData.location}\n\nHours:\n${Object.entries(
+        contactData.hours,
+      )
+        .map(([day, time]) => `${day}: ${time}`)
+        .join("\n")}`;
     }
 
-    if (lower.includes("price") || lower.includes("cost")) {
-      return "For pricing:\n📞 Call: +254717770536\n📧 Email: brivemarctechnologies@gmail.com\nWe offer free consultations!";
+    // --- About / Team ---
+    if (/\b(founder|team|about|who)\b/.test(cleanMsg)) {
+      return (
+        "Our team consists of:\n" +
+        foundersData.map((f) => `${f.name} - ${f.role}`).join("\n")
+      );
     }
 
-    if (lower.includes("contact")) {
-      return "📞 +254717770536\n📧 brivemarctechnologies@gmail.com\n📍 Nairobi, Kenya\n\nMon-Fri: 8AM-6PM\nSat: 9AM-4PM";
+    // --- Services (general or specific) ---
+    const generalServiceKeywords =
+      /\b(service|services|offer|solution|solutions)\b/;
+    const specificServiceKeywords =
+      /\b(website|app|system|seo|marketing|automation|branding|logo|iot|cloud|cybersecurity)\b/;
+
+    // General service request
+    if (
+      generalServiceKeywords.test(cleanMsg) ||
+      specificServiceKeywords.test(cleanMsg)
+    ) {
+      const fuse = new Fuse(servicesData, {
+        keys: ["name", "slug", "category", "shortDescription"],
+        threshold: 0.4,
+      });
+
+      const result = fuse.search(cleanMsg);
+      if (result.length > 0) {
+        const service = result[0].item;
+        return `💡 ${service.name}\n\n${service.fullDescription}\n\nFeatures: ${service.features.join(
+          ", ",
+        )}\nBenefits: ${service.benefits.join(", ")}\nTechnologies: ${
+          service.technologies?.join(", ") || "Not specified"
+        }\nPricing: ${service.pricing}`;
+      }
+
+      // No specific match, show all services
+      return (
+        "Here are our services:\n\n" +
+        servicesData
+          .map(
+            (s, i) =>
+              `${i + 1}. ${s.name} - ${s.shortDescription} [${s.pricing}]`,
+          )
+          .join("\n")
+      );
     }
 
-    if (lower.includes("about") || lower.includes("who")) {
-      return "Brivemarc Technologies is a registered Kenyan tech agency with 4 founders: Brighton Wandera, Muola Veronica, Marcos Solomon, and Kariuki Evans. We deliver Smart • Secure solutions!";
+    // Specific service request
+    if (specificServiceKeywords.test(cleanMsg)) {
+      // --- Services (specific or general) ---
+      const fuse = new Fuse(servicesData, {
+        keys: ["name", "slug", "category", "shortDescription"],
+        threshold: 0.4,
+      });
+
+      // Run fuzzy search on all messages mentioning services or service-related words
+      if (
+        /\b(service|services|website|app|system|seo|marketing|automation|branding|iot|cloud|cybersecurity|logo)\b/.test(
+          cleanMsg,
+        )
+      ) {
+        const result = fuse.search(cleanMsg);
+
+        if (result.length > 0) {
+          const service = result[0].item;
+          return `💡 ${service.name}\n\n${service.fullDescription}\n\nFeatures: ${service.features.join(
+            ", ",
+          )}\nBenefits: ${service.benefits.join(", ")}\nTechnologies: ${
+            service.technologies?.join(", ") || "Not specified"
+          }\nPricing: ${service.pricing}`;
+        }
+
+        // If no fuzzy match, show full list
+        return (
+          "Here are our services:\n\n" +
+          servicesData
+            .map(
+              (s, i) =>
+                `${i + 1}. ${s.name} - ${s.shortDescription} [${s.pricing}]`,
+            )
+            .join("\n")
+        );
+      }
+      const result = fuse.search(cleanMsg);
+
+      if (result.length > 0) {
+        const service = result[0].item;
+        return `💡 ${service.name}\n\n${service.fullDescription}\n\nFeatures: ${service.features.join(
+          ", ",
+        )}\nBenefits: ${service.benefits.join(", ")}\nTechnologies: ${
+          service.technologies?.join(", ") || "Not specified"
+        }\nPricing: ${service.pricing}`;
+      } else {
+        return (
+          "I couldn’t find an exact match, but here are all our services:\n\n" +
+          servicesData
+            .map(
+              (s, i) =>
+                `${i + 1}. ${s.name} - ${s.shortDescription} [${s.pricing}]`,
+            )
+            .join("\n")
+        );
+      }
     }
 
-    return "I can help you with:\n• Our services\n• Pricing\n• Contact info\n• About us\n\nOr call +254717770536 for immediate help!";
+    // --- Pricing inquiries ---
+    if (/\b(price|pricing|cost|charge|fee)\b/.test(cleanMsg)) {
+      return `For pricing, please call ${contactData.phone} or email ${contactData.email}. We also offer free consultations!`;
+    }
+
+    // --- Fallback ---
+    return `I can help you with:
+• Our services
+• Details on a specific service
+• Team / About
+• Pricing
+• Contact info
+
+Or call ${contactData.phone} for immediate help!`;
   };
 
+  // --- Handle sending messages ---
   const handleSend = () => {
     if (!inputValue.trim()) return;
 
@@ -80,7 +197,7 @@ const Chatbot = () => {
 
       setMessages((prev) => [...prev, botResponse]);
       setIsTyping(false);
-    }, 1000);
+    }, 800);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
