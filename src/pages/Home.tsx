@@ -169,7 +169,7 @@ const Home = () => {
       </section>
 
       {/* DASHBOARD SHOWCASE */}
-      <DashboardShowcase />
+      {/* <DashboardShowcase /> */}
 
       {/* SOCIAL PROOF */}
       <SocialProof />

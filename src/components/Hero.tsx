@@ -81,7 +81,7 @@ const DynamicHero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black overflow-hidden">
+    <section className="relative min-h-screen flex items-center bg-gradient-to-b from-charcoal-200 via-deep-black to-deep-black overflow-hidden">
       {/* Particle Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
 
@@ -122,7 +122,7 @@ const DynamicHero = () => {
           <img
             src={heroImg}
             alt="Technology Solutions"
-            className="rounded-xl shadow-2xl border border-white/10"
+            className="rounded-xl shadow-2xl border border-white/10 max-h-[80vh] w-auto"
           />
         </div>
       </div>
