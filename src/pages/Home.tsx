@@ -4,7 +4,7 @@ import * as Icons from "lucide-react";
 import SocialProof from "../components/SocialProof";
 //import heroImg from "../assets/hero-tech.png";
 import DynamicHero from "../components/Hero";
-import DashboardShowcase from "../components/DashboardShowcase";
+//import DashboardShowcase from "../components/DashboardShowcase";
 
 type Service = {
   id: number;
