@@ -104,6 +104,7 @@ const Home = () => {
       </section> */}
 
       {/* SERVICES */}
+      {/* SERVICES */}
       <section className="bg-deep-black py-16">
         <div className="section-container">
           <div className="text-center mb-16">
@@ -116,29 +117,27 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {featuredServices.map((service) => {
-              // pick the first image from the array safely
               const coverImage = service.images?.[0];
 
               return (
                 <div
                   key={service.id}
-                  className="group relative flex flex-col h-full overflow-hidden rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
+                  className="group relative flex flex-col overflow-hidden rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
                 >
                   {/* IMAGE */}
                   {coverImage && (
-                    <div className="w-full h-48 bg-black flex items-center justify-center overflow-hidden">
-                      <img
-                        src={coverImage}
-                        alt={service.name}
-                        className="h-full object-contain"
-                      />
-                    </div>
+                    <img
+                      src={coverImage}
+                      alt={service.name}
+                      className="w-full object-contain"
+                    />
                   )}
 
                   {/* TEXT */}
-                  <div className="p-6 bg-charcoal-200/80 backdrop-blur-sm flex flex-col flex-1 justify-between">
+                  <div className="p-6 bg-charcoal-200/80 backdrop-blur-sm flex flex-col justify-end flex-1">
+                    {/* Your text content */}
                     <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">
                       {service.name}
                     </h3>
