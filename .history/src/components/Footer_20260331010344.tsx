@@ -13,11 +13,10 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: "Website Development", href: "" },
-      { name: "Custom Software Systems", href: "" },
-      { name: "AI & Automation", href: "" },
-      { name: "IoT & Smart Systems", href: "" },
-      { name: "Mobile App Development", href: "" },
+      { name: "Website Development", href: "/services#website-development" },
+      { name: "System Development", href: "/services#system-development" },
+      { name: "AI Automation", href: "/services#ai-automation" },
+      { name: "Digital Marketing", href: "/services#digital-marketing" },
     ],
     company: [
       { name: "About", href: "/about" },

@@ -14,10 +14,9 @@ const Footer = () => {
   const footerLinks = {
     services: [
       { name: "Website Development", href: "" },
-      { name: "Custom Software Systems", href: "" },
-      { name: "AI & Automation", href: "" },
-      { name: "IoT & Smart Systems", href: "" },
-      { name: "Mobile App Development", href: "" },
+      { name: "System Development", href: "" },
+      { name: "AI Automation", href: "" },
+      { name: "Digital Marketing", href: "" },
     ],
     company: [
       { name: "About", href: "/about" },

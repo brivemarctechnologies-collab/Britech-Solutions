@@ -71,11 +71,11 @@ const SocialProof = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-white/10">
             <div>
               <div className="text-3xl font-bold gradient-text">500+</div>
-              <p className="text-gray-400 text-sm">Trusted Followers</p>
+              <p className="text-gray-400 text-sm">Followers</p>
             </div>
             <div>
               <div className="text-3xl font-bold gradient-text">50+</div>
-              <p className="text-gray-400 text-sm">Reviews</p>
+              <p className="text-gray-400 text-sm">Videos</p>
             </div>
             <div>
               <div className="text-3xl font-bold gradient-text">5★</div>

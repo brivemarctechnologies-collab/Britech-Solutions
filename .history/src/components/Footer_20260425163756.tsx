@@ -17,7 +17,7 @@ const Footer = () => {
       { name: "Custom Software Systems", href: "" },
       { name: "AI & Automation", href: "" },
       { name: "IoT & Smart Systems", href: "" },
-      { name: "Mobile App Development", href: "" },
+      { name: "IoT & Smart Systems", href: "" },
     ],
     company: [
       { name: "About", href: "/about" },
