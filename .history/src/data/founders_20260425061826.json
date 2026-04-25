@@ -1,0 +1,175 @@
+[
+  {
+    "id": "1",
+    "name": "Marcos Solomon",
+    "role": "Cybersecurity Expert & Systems Architect",
+    "tagline": "Designing secure, scalable systems that businesses can rely on.",
+    "bio": "Leads system architecture and visual brand through graphic design.",
+
+    "story": "Marcos Solomon leads the system architecture and security engineering at Brivemarc Technologies. His work focuses on designing scalable backend systems that can handle real-world demand while maintaining strict security standards. He has built and structured systems from the ground up, ensuring that every layer, from database design to API architecture is optimized for performance and resilience. Marcos approaches every project with a security-first mindset, integrating best practices early rather than treating security as an afterthought. Beyond infrastructure, he plays a key role in shaping how systems evolve over time, ensuring they remain maintainable, scalable, and aligned with business growth. His philosophy is simple: systems should not just work, they should remain reliable, secure, and scalable under pressure.",
+
+    "responsibilities": [
+      "System architecture design",
+      "Security strategy & audits",
+      "Infrastructure planning"
+    ],
+
+    "expertise": [
+      "Cybersecurity",
+      "Distributed Systems",
+      "Backend Architecture"
+    ],
+
+    "techStack": ["Laravel", "Linux", "Docker", "Nginx"],
+
+    "notableWork": [
+      "Designed scalable backend for Solora Market system",
+      "Implemented security layer reducing vulnerabilities by 97%",
+      "Led architecture for multi-service platform"
+    ],
+
+    "philosophy": "Good systems are not just built to function, they are designed to withstand growth, failure, and attack without compromise.",
+
+    "image": "/images/Marcos.png",
+    "video": "",
+    "thumbnail": "",
+    "links": {
+      "linkedin": "",
+      "portfolio": ""
+    }
+  },
+
+  {
+    "id": "2",
+    "name": "Evans Kariuki",
+    "role": "Fullstack Engineer & IoT Systems Specialist",
+    "tagline": "Building connected systems that bridge software and real-world devices.",
+    "bio": "Develops fullstack applications and IoT systems that power real-time, scalable digital solutions.",
+
+    "story": "Evans Kariuki is responsible for building and integrating fullstack systems that drive real-world functionality at Brivemarc Technologies. His work sits at the intersection of software engineering and hardware integration, where he develops applications that not only function digitally but also interact with physical devices. He specializes in developing robust backend systems using Node.js and Express, paired with responsive frontends built in React. His approach focuses on performance, scalability, and seamless user experience across platforms. Beyond traditional software, Evans extends systems into the physical world through IoT, enabling automation, remote control, and real-time data processing. From designing APIs and managing databases to integrating microcontrollers and sensor-driven systems, he ensures that every component communicates efficiently and reliably. His work enables businesses to move beyond static systems into intelligent, automated environments. Evans believes that technology should not just solve problems on screen, but should actively interact with the real world, creating systems that are both practical and impactful.",
+
+    "responsibilities": [
+      "Fullstack system development (frontend & backend)",
+      "API design and backend architecture",
+      "IoT system integration and automation",
+      "Database design and management",
+      "Real-time system communication"
+    ],
+
+    "expertise": [
+      "Fullstack Development",
+      "IoT & Automation",
+      "API Development",
+      "Real-time Systems",
+      "Database Systems"
+    ],
+
+    "techStack": ["Node.js", "Express", "React", "MySQL", "ESP32", "MQTT"],
+
+    "notableWork": [
+      "Developed IoT-based smart control system with real-time device communication",
+      "Built scalable fullstack applications using MERN architecture",
+      "Integrated hardware systems with cloud-based dashboards for monitoring and control"
+    ],
+
+    "philosophy": "Technology should go beyond the screen and actively interact with the real world to solve meaningful problems.",
+
+    "image": "/images/Evans.jpeg",
+    "video": "",
+    "thumbnail": "",
+    "links": {
+      "linkedin": "",
+      "portfolio": "https://evans-kariuki.netlify.app/"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Muola Veronica",
+    "role": "Design Director & Cybersecurity Lead",
+    "tagline": "Crafting intuitive digital experiences built on trust, usability, and security.",
+    "bio": "Leads product design and user experience while ensuring systems remain secure, intuitive, and user-focused.",
+
+    "story": "Muola Veronica leads the design and user experience strategy at Brivemarc Technologies, ensuring that every product is not only visually compelling but also intuitive, accessible, and secure. Her work bridges the gap between design and functionality, focusing on how users interact with systems and how those systems earn user trust. She approaches design as more than aesthetics, treating it as a structured process that influences usability, engagement, and conversion. From wireframing and prototyping to final interface design, Muola ensures that every detail aligns with both user expectations and business goals. In addition to design, she plays a critical role in cybersecurity, ensuring that user-facing systems are built with security in mind. She focuses on protecting user data, improving trust signals within interfaces, and ensuring that security measures do not compromise user experience. Her ability to combine design thinking with security awareness allows her to create products that are not only beautiful and easy to use but also reliable and trustworthy. Muola believes that great design is not just seen, it is experienced, and that trust is a core part of that experience.",
+
+    "responsibilities": [
+      "UI/UX design and product experience strategy",
+      "Wireframing, prototyping, and interface design",
+      "User journey optimization and usability improvements",
+      "Security integration in user-facing systems",
+      "Design consistency and brand alignment"
+    ],
+
+    "expertise": [
+      "UI/UX Design",
+      "Product Design",
+      "User Research",
+      "Design Systems",
+      "Security in UX"
+    ],
+
+    "techStack": ["Figma", "Adobe XD", "Photoshop", "Illustrator"],
+
+    "notableWork": [
+      "Designed user interfaces for multiple web and mobile applications",
+      "Improved usability and user flow across client platforms",
+      "Integrated security-focused design practices into user experiences"
+    ],
+
+    "philosophy": "Design is not just how something looks, but how it works, how it feels, and how much users trust it.",
+
+    "image": "/images/Muola.png",
+    "video": "",
+    "thumbnail": "",
+    "links": {
+      "linkedin": "",
+      "portfolio": ""
+    }
+  },
+
+  {
+    "id": "4",
+    "name": "Brighton Wandera",
+    "role": "Android Developer, AI Engineer & Frontend Developer",
+    "tagline": "Building intelligent applications that merge performance, usability, and real-world impact.",
+    "bio": "Develops high-performance mobile apps and intelligent user interfaces powered by AI.",
+
+    "story": "Brighton Wandera leads mobile application development and AI-driven frontend systems at Brivemarc Technologies. His work focuses on building Android applications and responsive interfaces that are not only visually refined but also optimized for performance and real-world usability. He has hands-on experience developing applications that integrate intelligent features such as automation, data-driven insights, and adaptive user experiences. Brighton bridges the gap between design and functionality by ensuring that every interface is fast, intuitive, and scalable. His development approach emphasizes efficiency, maintainability, and user-centric thinking, ensuring that products are not just functional, but impactful. By combining frontend engineering with AI capabilities, he plays a key role in delivering modern applications that adapt to user behavior and evolving business needs.",
+
+    "responsibilities": [
+      "Android application development",
+      "Frontend system architecture",
+      "AI feature integration in user interfaces"
+    ],
+
+    "expertise": [
+      "Android Development",
+      "Frontend Engineering",
+      "AI Integration",
+      "UI/UX Performance Optimization"
+    ],
+
+    "techStack": [
+      "Kotlin",
+      "Flutter",
+      "React",
+      "JavaScript",
+      "TensorFlow Lite"
+    ],
+
+    "notableWork": [
+      "Developed Android-based smart control applications",
+      "Built responsive dashboards for IoT systems",
+      "Integrated AI-driven features into mobile interfaces"
+    ],
+
+    "philosophy": "Technology should not just function, it should adapt, respond, and improve the way people interact with systems.",
+
+    "image": "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1",
+    "video": "",
+    "thumbnail": "",
+    "links": {
+      "linkedin": "",
+      "portfolio": ""
+    }
+  }
+]

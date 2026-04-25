@@ -1,0 +1,155 @@
+[
+  {
+    "id": 4,
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "category": "Marketing",
+    "icon": "Megaphone",
+    "shortDescription": "Strategic campaigns for growth",
+    "fullDescription": "Marketing strategies designed to drive engagement and ROI.",
+    "features": ["Social Media", "Email Campaigns", "Content Marketing"],
+    "benefits": ["Brand awareness", "Lead generation", "Customer engagement"],
+    "pricing": "Starting from KSh 15,000/month",
+    "images": [
+      "https://media.istockphoto.com/id/2204337769/photo/digital-marketing-development-and-goals-strategy-attract-organic-traffic-for-big-sales.webp?a=1&b=1&s=612x612&w=0&k=20&c=CDFsitcQFmrPWNB47jJUfUqY6adPpMH2ziQIVDFJMck=",
+      "/images/services/Digital_Marketing_Cover.jpg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+
+  {
+    "id": 11,
+    "name": "Cybersecurity",
+    "slug": "cybersecurity",
+    "category": "Security",
+    "icon": "Shield",
+    "shortDescription": "Protect your systems and data",
+    "fullDescription": "Guaranteed security solutions to safeguard your systems from cyber threats and vulnerabilities.",
+    "features": [
+      "Security Audits",
+      "Penetration Testing",
+      "Data Protection",
+      "Threat Monitoring"
+    ],
+    "benefits": [
+      "Data protection",
+      "Risk reduction",
+      "Compliance",
+      "Customer trust"
+    ],
+    "pricing": "Starting from KSh 35,000",
+    "images": [
+      "/images/services/Cyber_Security_1.jpg",
+      "/images/services/Cyber_Security_2.jpg",
+      "/images/services/Cyber_Security_3.jpg",
+      "/images/services/Cyber_Security_4.jpg"
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "SEO Optimization",
+    "slug": "seo-optimization",
+    "category": "Marketing",
+    "icon": "Search",
+    "shortDescription": "Improve visibility on search engines",
+    "fullDescription": "SEO strategies to rank higher and drive organic traffic.",
+    "features": ["Keyword Research", "On-Page SEO", "Technical SEO"],
+    "benefits": ["More traffic", "Higher rankings", "Credibility"],
+    "pricing": "Starting from KSh 10,000",
+    "images": [
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg"
+    ]
+  },
+
+  {
+    "id": 7,
+    "name": "Logo Design",
+    "slug": "logo-design",
+    "category": "Design",
+    "icon": "Palette",
+    "shortDescription": "Unique logos that define your brand identity",
+    "fullDescription": "We design professional logos that capture your brand’s identity and make you stand out.",
+    "features": [
+      "Custom Concepts",
+      "Multiple Revisions",
+      "Vector Files",
+      "Brand Guidelines"
+    ],
+    "benefits": [
+      "Brand recognition",
+      "Professional image",
+      "Stand out from competitors"
+    ],
+    "pricing": "Starting from KSh 5,000",
+    "images": [
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg"
+    ]
+  },
+
+  {
+    "id": 8,
+    "name": "Brand Identity",
+    "slug": "brand-identity",
+    "category": "Design",
+    "icon": "Sparkles",
+    "shortDescription": "Complete branding systems for your business",
+    "fullDescription": "We create cohesive brand identities that communicate your story and values.",
+    "features": [
+      "Logo System",
+      "Color Palette",
+      "Typography",
+      "Brand Guidelines"
+    ],
+    "benefits": [
+      "Consistent branding",
+      "Customer trust",
+      "Professional positioning"
+    ],
+    "pricing": "Starting from KSh 25,000",
+    "images": [
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+
+  {
+    "id": 10,
+    "name": "Cloud Solutions",
+    "slug": "cloud-solutions",
+    "category": "Infrastructure",
+    "icon": "Cloud",
+    "shortDescription": "Cloud infrastructure and migration services",
+    "fullDescription": "We help businesses move to and scale on the cloud with secure and optimized infrastructure.",
+    "features": [
+      "Cloud Migration",
+      "Infrastructure Setup",
+      "Database Hosting Setup",
+      "Backup Systems Configuration"
+    ],
+    "benefits": [
+      "Scalability",
+      "Reduced costs",
+      "High availability",
+      "Global access"
+    ],
+    "technologies": ["AWS", "Azure", "Docker"],
+    "pricing": "Starting from KSh 30,000",
+    "images": [
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  }
+]

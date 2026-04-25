@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "name": "Website Development",
+    "slug": "website-development",
+    "category": "Development",
+    "icon": "Globe",
+    "shortDescription": "Professional, responsive websites built with modern technologies",
+    "fullDescription": "We create custom, high-performance websites tailored to your business needs.",
+    "features": [
+      "Responsive Design",
+      "SEO Optimized",
+      "Fast Loading Speed",
+      "Mobile-First Approach",
+      "CMS Integration",
+      "E-commerce Solutions"
+    ],
+    "benefits": [
+      "Strong online presence",
+      "24/7 availability",
+      "Professional brand image",
+      "Higher conversions"
+    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    "pricing": "Starting from KSh 25,000",
+    "images": [
+      "https://media.istockphoto.com/id/2178848997/photo/indian-software-development-working-on-coding-computer-screen-and-flowchart-at-night-in.webp?a=1&b=1&s=612x612&w=0&k=20&c=VklnB2zgIJQXzuGJ_-yfNMNwQHNpU5A5DHrxD4f14zw=",
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development-cover.jpg",
+      "/images/services/website-development-cover.jpg",
+      "/images/services/website-development-cover.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "System Development",
+    "slug": "system-development",
+    "category": "Development",
+    "icon": "Settings",
+    "shortDescription": "Scalable systems tailored to business operations",
+    "fullDescription": "Custom systems that streamline operations and scale with your business.",
+    "features": [
+      "Custom Software",
+      "Database Design",
+      "API Development",
+      "System Integration"
+    ],
+    "benefits": [
+      "Efficiency",
+      "Automation",
+      "Scalability",
+      "Reduced manual work"
+    ],
+    "technologies": ["Node.js", "Python", "PostgreSQL"],
+    "pricing": "Custom quote",
+    "images": [
+      "/images/services/Software_1.png",
+      "/images/services/Software_Cover.png",
+      "/images/services/Software_Cover.png",
+      "/images/services/Software_Cover.png"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "AI Automation",
+    "slug": "ai-automation",
+    "category": "AI & Automation",
+    "icon": "Cpu",
+    "shortDescription": "Automate workflows using AI",
+    "fullDescription": "AI-powered automation to reduce costs and improve efficiency.",
+    "features": ["Process Automation", "Chatbots", "Predictive Analytics"],
+    "benefits": ["Save time", "Reduce errors", "Data-driven decisions"],
+    "technologies": ["Python", "TensorFlow"],
+    "pricing": "Starting from KSh 50,000",
+    "images": [
+      "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QUklMjBBdXRvbWF0aW9ufGVufDB8fDB8fHww",
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "category": "Marketing",
+    "icon": "Megaphone",
+    "shortDescription": "Strategic campaigns for growth",
+    "fullDescription": "Marketing strategies designed to drive engagement and ROI.",
+    "features": ["Social Media", "Email Campaigns", "Content Marketing"],
+    "benefits": ["Brand awareness", "Lead generation", "Customer engagement"],
+    "pricing": "Starting from KSh 15,000/month",
+    "images": [
+      "/images/services/Digital_Marketing_Cover.jpg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "SEO Optimization",
+    "slug": "seo-optimization",
+    "category": "Marketing",
+    "icon": "Search",
+    "shortDescription": "Improve visibility on search engines",
+    "fullDescription": "SEO strategies to rank higher and drive organic traffic.",
+    "features": ["Keyword Research", "On-Page SEO", "Technical SEO"],
+    "benefits": ["More traffic", "Higher rankings", "Credibility"],
+    "pricing": "Starting from KSh 20,000/month",
+    "images": [
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg",
+      "/images/services/SEO_Cover.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "App Development",
+    "slug": "app-development",
+    "category": "Development",
+    "icon": "Smartphone",
+    "shortDescription": "Mobile applications for Android and iOS",
+    "fullDescription": "We build high-performance mobile applications tailored for both Android and iOS platforms.",
+    "features": [
+      "Android Development",
+      "iOS Development",
+      "Cross-Platform Apps",
+      "Push Notifications",
+      "App Store Optimization"
+    ],
+    "benefits": [
+      "Reach mobile users",
+      "Increase engagement",
+      "Stronger brand presence",
+      "Revenue generation"
+    ],
+    "technologies": ["Flutter", "React Native", "Kotlin"],
+    "pricing": "Starting from KSh 100,000",
+    "images": [
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Logo Design",
+    "slug": "logo-design",
+    "category": "Design",
+    "icon": "Palette",
+    "shortDescription": "Unique logos that define your brand identity",
+    "fullDescription": "We design professional logos that capture your brand’s identity and make you stand out.",
+    "features": [
+      "Custom Concepts",
+      "Multiple Revisions",
+      "Vector Files",
+      "Brand Guidelines"
+    ],
+    "benefits": [
+      "Brand recognition",
+      "Professional image",
+      "Stand out from competitors"
+    ],
+    "pricing": "Starting from KSh 5,000",
+    "images": [
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg",
+      "/images/services/logo.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Brand Identity",
+    "slug": "brand-identity",
+    "category": "Design",
+    "icon": "Sparkles",
+    "shortDescription": "Complete branding systems for your business",
+    "fullDescription": "We create cohesive brand identities that communicate your story and values.",
+    "features": [
+      "Logo System",
+      "Color Palette",
+      "Typography",
+      "Brand Guidelines"
+    ],
+    "benefits": [
+      "Consistent branding",
+      "Customer trust",
+      "Professional positioning"
+    ],
+    "pricing": "Starting from KSh 25,000",
+    "images": [
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "IoT Device Integration",
+    "slug": "iot-integration",
+    "category": "IoT & Hardware",
+    "icon": "Plug",
+    "shortDescription": "Smart device and IoT system integration",
+    "fullDescription": "We connect devices and systems to enable automation, monitoring, and real-time data insights.",
+    "features": [
+      "Device Integration",
+      "Sensor Systems",
+      "Real-Time Monitoring",
+      "Cloud Connectivity"
+    ],
+    "benefits": [
+      "Automation",
+      "Remote control",
+      "Real-time insights",
+      "Operational efficiency"
+    ],
+    "technologies": ["Arduino", "ESP32", "MQTT"],
+    "pricing": "Starting from KSh 40,000",
+    "images": [
+      "/images/services/IoT_2.png",
+      "/images/services/IoT_1.jpeg",
+      "/images/services/IoT_Electronics.jpg",
+      "/images/services/IoT_Setup.jpg",
+      "/images/services/IoT_Dimmer_Dashboard_1.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Cloud Solutions",
+    "slug": "cloud-solutions",
+    "category": "Infrastructure",
+    "icon": "Cloud",
+    "shortDescription": "Cloud infrastructure and migration services",
+    "fullDescription": "We help businesses move to and scale on the cloud with secure and optimized infrastructure.",
+    "features": [
+      "Cloud Migration",
+      "Infrastructure Setup",
+      "Database Hosting Setup",
+      "Backup Systems Configuration"
+    ],
+    "benefits": [
+      "Scalability",
+      "Reduced costs",
+      "High availability",
+      "Global access"
+    ],
+    "technologies": ["AWS", "Azure", "Docker"],
+    "pricing": "Starting from KSh 30,000",
+    "images": [
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Cybersecurity",
+    "slug": "cybersecurity",
+    "category": "Security",
+    "icon": "Shield",
+    "shortDescription": "Protect your systems and data",
+    "fullDescription": "Guaranteed security solutions to safeguard your systems from cyber threats and vulnerabilities.",
+    "features": [
+      "Security Audits",
+      "Penetration Testing",
+      "Data Protection",
+      "Threat Monitoring"
+    ],
+    "benefits": [
+      "Data protection",
+      "Risk reduction",
+      "Compliance",
+      "Customer trust"
+    ],
+    "pricing": "Starting from KSh 35,000",
+    "images": [
+      "/images/services/Cyber_Security_1.jpg",
+      "/images/services/Cyber_Security_2.jpg",
+      "/images/services/Cyber_Security_3.jpg",
+      "/images/services/Cyber_Security_4.jpg"
+    ]
+  }
+]

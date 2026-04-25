@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "name": "Web Development",
+    "slug": "web-development",
+    "category": "Development",
+    "icon": "Globe",
+    "shortDescription": "High-performance websites and web platforms",
+    "fullDescription": "We build fast, scalable, and conversion-focused web platforms tailored to your business goals.",
+    "features": [
+      "Responsive UI/UX",
+      "SEO-ready architecture",
+      "High performance optimization",
+      "CMS or custom dashboards",
+      "E-commerce systems"
+    ],
+    "benefits": [
+      "Stronger online presence",
+      "Improved conversions",
+      "Faster user experience",
+      "Scalable architecture"
+    ],
+    "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    "pricing": "Starting from KSh 30,000",
+    "images": [
+      "https://media.istockphoto.com/id/2178848997/photo/indian-software-development-working-on-coding-computer-screen-and-flowchart-at-night-in.webp?a=1&b=1&s=612x612&w=0&k=20&c=VklnB2zgIJQXzuGJ_-yfNMNwQHNpU5A5DHrxD4f14zw=",
+      "https://cdn2.hubspot.net/hub/53/file-2367520974-png/Website-Homepage-Design-2015-Mint.png?width=669&name=Website-Homepage-Design-2015-Mint.png",
+      "https://cdn.dribbble.com/userupload/17730953/file/original-05a2f18aae02857f16dc660924a28639.png?format=webp&resize=400x300&vertical=center",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2PLV87jUiajIXRzIijFeuJJA7fq4q3McD5w&s"
+    ],
+    "testimonials": [
+      "Our website went from basic to premium - conversions doubled within weeks.",
+      "Fast delivery and very clean UI/UX implementation."
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Custom Software Systems",
+    "slug": "custom-systems",
+    "category": "Engineering",
+    "icon": "Settings",
+    "shortDescription": "Tailored systems to automate and scale operations",
+    "fullDescription": "We design and build robust backend systems that automate workflows and scale with your business.",
+    "features": [
+      "Business process automation",
+      "API architecture",
+      "Database design",
+      "System integrations"
+    ],
+    "benefits": [
+      "Reduced manual work",
+      "Operational efficiency",
+      "Scalability",
+      "Data centralization"
+    ],
+    "technologies": ["Node.js", "Python", "PostgreSQL"],
+    "pricing": "Custom quote",
+    "images": [
+      "/images/services/Software_1.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwD27XCc1fPCbPiWXf8ZeEjGyMHphMwVtrYQ&s",
+      "https://cdn.dribbble.com/userupload/3694208/file/original-00598b1103bb99fe1f878ccd1e0eb863.png?format=webp&resize=400x300&vertical=center",
+      "/images/services/Software_Cover.png"
+    ],
+    "testimonials": [
+      "Our operations are now fully automated - massive time savings.",
+      "System stability and performance exceeded expectations."
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Mobile App Development",
+    "slug": "mobile-apps",
+    "category": "Engineering",
+    "icon": "Smartphone",
+    "shortDescription": "High-performance Android and cross-platform apps",
+    "fullDescription": "We build intuitive and scalable mobile applications focused on performance and user experience.",
+    "features": [
+      "Android development",
+      "Cross-platform apps",
+      "Real-time data sync",
+      "Push notifications"
+    ],
+    "benefits": [
+      "Reach mobile users",
+      "Higher engagement",
+      "Stronger brand presence"
+    ],
+    "technologies": ["Flutter", "React Native", "Kotlin"],
+    "pricing": "Starting from KSh 120,000",
+    "images": [
+      "https://cdn.replit.com/sanity/iphone-mock-1.png",
+      "https://images.unsplash.com/photo-1586329501141-c0a435d6c0bb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5kcm9pZCUyMGFwcHN8ZW58MHx8MHx8fDA%3D",
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png",
+      "/images/services/IoT_Dimmer_Dashboard_1.png"
+    ],
+    "testimonials": [
+      "The app runs smoothly and users love the experience.",
+      "Clean architecture and very responsive performance."
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "IoT & Smart Systems",
+    "slug": "iot-systems",
+    "category": "Hardware & Systems",
+    "icon": "Plug",
+    "shortDescription": "Connected systems for automation and monitoring",
+    "fullDescription": "We build IoT systems that connect devices, automate processes, and provide real-time insights.",
+    "features": [
+      "Device integration",
+      "Sensor networks",
+      "Remote control systems",
+      "Real-time dashboards"
+    ],
+    "benefits": ["Automation", "Real-time visibility", "Remote management"],
+    "technologies": ["ESP32", "MQTT", "Node.js"],
+    "pricing": "Starting from KSh 50,000",
+    "images": [
+      "/images/services/IoT_2.png",
+      "/images/services/IoT_1.jpeg",
+      "/images/services/IoT_Electronics.jpg",
+      "/images/services/IoT_Setup.jpg",
+      "/images/services/IoT_Dimmer_Dashboard_1.jpg"
+    ],
+    "testimonials": [
+      "We can now monitor everything remotely - huge efficiency boost.",
+      "The system is reliable and works in real-time without issues."
+    ]
+  },
+
+  {
+    "id": 4,
+    "name": "AI & Automation",
+    "slug": "ai-automation",
+    "category": "Advanced Systems",
+    "icon": "Cpu",
+    "shortDescription": "AI-driven automation for smarter operations",
+    "fullDescription": "We integrate AI into your systems to automate tasks, improve decision-making, and reduce operational costs.",
+    "features": [
+      "Workflow automation",
+      "Chatbots & assistants",
+      "Predictive analytics",
+      "Data processing pipelines"
+    ],
+    "benefits": [
+      "Reduced operational cost",
+      "Faster decisions",
+      "Improved accuracy"
+    ],
+    "technologies": ["Python", "TensorFlow", "OpenAI"],
+    "pricing": "Starting from KSh 60,000",
+    "images": [
+      "https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QUklMjBBdXRvbWF0aW9ufGVufDB8fDB8fHww",
+      "/images/services/website-development.jpeg",
+      "/images/services/website-development/cover.jpg",
+      "/images/services/website-development/dashboard.png",
+      "/images/services/website-development/mobile.png"
+    ],
+    "testimonials": [
+      "Automation reduced our workload significantly.",
+      "AI insights helped us make better business decisions."
+    ]
+  }
+]

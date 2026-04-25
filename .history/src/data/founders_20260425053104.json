@@ -1,0 +1,75 @@
+[
+  {
+    "id": "1",
+    "name": "Marcos Solomon",
+    "role": "Cybersecurity Expert & Systems Architect",
+    "tagline": "Designing secure, scalable systems that businesses can rely on.",
+    "bio": "Short sharp positioning sentence (not fluff).",
+
+    "story": "Full narrative (long, detailed, human).",
+
+    "responsibilities": [
+      "System architecture design",
+      "Security strategy & audits",
+      "Infrastructure planning"
+    ],
+
+    "expertise": [
+      "Cybersecurity",
+      "Distributed Systems",
+      "Backend Architecture"
+    ],
+
+    "techStack": ["Node.js", "Linux", "Docker", "Nginx"],
+
+    "notableWork": [
+      "Designed scalable backend for X system",
+      "Implemented security layer reducing vulnerabilities by X%",
+      "Led architecture for multi-service platform"
+    ],
+
+    "philosophy": "Short personal belief about tech/work.",
+
+    "image": "/images/Marcos.png",
+    "video": "",
+    "thumbnail": ""
+  },
+
+  {
+    "id": "1",
+    "name": "Marcos Solomon",
+    "role": "Cybersecurity Expert & Systems Architect",
+    "bio": "Leads system architecture and visual brand through graphic design.",
+    "image": "/images/Marcos.png",
+    "story": "Marcos designs scalable systems and ensures robust security across all platforms, while also contributing to visual branding.",
+    "video": ""
+  },
+  {
+    "id": "2",
+    "name": "Evans Kariuki",
+    "role": "Backend Engineer & IoT Specialist",
+    "bio": "Builds scalable backend systems and connected IoT solutions.",
+    "image": "/images/Evans.jpeg",
+    "story": "Evans focuses on backend infrastructure and IoT integrations, enabling seamless communication between systems and devices.",
+    "video": "/videos/evans.mp4",
+    "thumbnail": "/images/evans-thumb.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Muola Veronica",
+    "role": "Design Director & Cybersecurity Lead",
+    "bio": "Oversees design, cybersecurity, and customer experience strategy.",
+    "image": "/images/Muola.png",
+    "story": "Veronica leads the design vision and ensures that every product is both secure and intuitive. She blends creativity with technical precision.",
+    "video": ""
+  },
+  {
+    "id": "4",
+    "name": "Brighton Wandera",
+    "role": "Android Dev, AI Engineer & Frontend Developer",
+    "bio": "AI-focused developer building intelligent, high-performance user interfaces and android applications.",
+    "image": "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1",
+    "story": "Brighton specializes in building intelligent systems that merge AI with real-world applications. His work focuses on performance, scalability, and user-centric design.",
+    "video": ""
+  }
+]
