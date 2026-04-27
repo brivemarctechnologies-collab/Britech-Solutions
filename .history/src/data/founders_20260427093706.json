@@ -86,8 +86,8 @@
     "philosophy": "Technology should go beyond the screen and actively interact with the real world to solve meaningful problems.",
 
     "image": "/images/Evans.jpeg",
-    "video": "",
-    "thumbnail": "",
+    "video": "https://www.youtube.com/embed/9Xo2n8s1k3c",
+    "thumbnail": "https://img.youtube.com/vi/9Xo2n8s1k3c/hqdefault.jpg",
     "links": {
       "linkedin": "https://www.linkedin.com/in/evan-kariuki-252545350",
       "portfolio": "https://evans-kariuki.netlify.app/"
@@ -179,7 +179,7 @@
     "video": "",
     "thumbnail": "",
     "links": {
-      "linkedin": "https://www.linkedin.com/in/brighton-wandera?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      "linkedin": "",
       "portfolio": ""
     }
   }

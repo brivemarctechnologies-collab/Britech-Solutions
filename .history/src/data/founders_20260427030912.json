@@ -46,14 +46,14 @@
     "tagline": "Building connected systems that bridge software and real-world devices.",
     "bio": "Develops fullstack applications and IoT systems that power real-time, scalable digital solutions.",
 
-    "story": "Evans Kariuki is responsible for building and integrating fullstack systems that drive real-world functionality at Brivemarc Technologies. His work sits at the intersection of software engineering and hardware integration, where he develops applications that not only function digitally but also interact with physical devices. He specializes in developing robust backend systems using Node.js and Express, paired with responsive frontends built in React. His approach focuses on performance, scalability, and seamless user experience across platforms. Beyond traditional software, Evans extends systems into the physical world through IoT & TinyML, enabling automation, remote control, and real-time data processing. From designing APIs and managing databases to integrating microcontrollers and sensor-driven systems, he ensures that every component communicates efficiently and reliably. His work enables businesses to move beyond static systems into intelligent, automated environments. Evans believes that technology should not just solve problems on screen, but should actively interact with the real world, creating systems that are both practical and impactful.",
+    "story": "Evans Kariuki is responsible for building and integrating fullstack systems that drive real-world functionality at Brivemarc Technologies. His work sits at the intersection of software engineering and hardware integration, where he develops applications that not only function digitally but also interact with physical devices. He specializes in developing robust backend systems using Node.js and Express, paired with responsive frontends built in React. His approach focuses on performance, scalability, and seamless user experience across platforms. Beyond traditional software, Evans extends systems into the physical world through IoT, enabling automation, remote control, and real-time data processing. From designing APIs and managing databases to integrating microcontrollers and sensor-driven systems, he ensures that every component communicates efficiently and reliably. His work enables businesses to move beyond static systems into intelligent, automated environments. Evans believes that technology should not just solve problems on screen, but should actively interact with the real world, creating systems that are both practical and impactful.",
 
     "responsibilities": [
       "Fullstack system development (frontend & backend)",
       "API design and backend architecture",
-      "IoT system integration and automation with TinyML",
+      "IoT system integration and automation",
       "Database design and management",
-      "Real-time system communication and data processing"
+      "Real-time system communication"
     ],
 
     "expertise": [
@@ -61,8 +61,7 @@
       "IoT & Automation",
       "API Development",
       "Real-time Systems",
-      "Database Systems",
-      "TinyML & Edge Computing"
+      "Database Systems"
     ],
 
     "techStack": [
@@ -72,9 +71,7 @@
       "MySQL",
       "Raspberry Pi",
       "ESP32",
-      "MQTT",
-      "TensorFlow Lite",
-      "Arduino"
+      "MQTT"
     ],
 
     "notableWork": [
@@ -153,8 +150,8 @@
     ],
 
     "expertise": [
-      "Mobile Development",
-      "Full Stack Engineering",
+      "Android Development",
+      "Frontend Engineering",
       "AI Integration",
       "UI/UX Performance Optimization"
     ],
@@ -168,9 +165,9 @@
     ],
 
     "notableWork": [
-      "Built and published cross-platform mobile apps on Google Play",
-      "Developed full stack web systems with responsive, data-driven interfaces",
-      "Integrated AI-driven features into mobile and web applications"
+      "Developed Android-based smart control applications",
+      "Built responsive dashboards for IoT systems",
+      "Integrated AI-driven features into mobile interfaces"
     ],
 
     "philosophy": "Technology should not just function, it should adapt, respond, and improve the way people interact with systems.",
@@ -179,7 +176,7 @@
     "video": "",
     "thumbnail": "",
     "links": {
-      "linkedin": "https://www.linkedin.com/in/brighton-wandera?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      "linkedin": "",
       "portfolio": ""
     }
   }
