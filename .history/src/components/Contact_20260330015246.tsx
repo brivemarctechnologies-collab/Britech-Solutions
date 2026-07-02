@@ -95,7 +95,7 @@
 //                                 </div>
 //                                 <div>
 //                                     <p className="text-sm text-gray-400 mb-1">Location</p>
-//                                     <p className="text-lg text-white">Embu, Kenya</p>
+//                                     <p className="text-lg text-white">Nairobi, Kenya</p>
 //                                 </div>
 //                             </div>
 //                         </div>
